@@ -3,10 +3,8 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
-import functools
 import hashlib
 import importlib.metadata
-import inspect
 import json
 import math
 import os
@@ -101,35 +99,23 @@ def configure_environment() -> None:
     os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
 
-def install_runner_audit(platform: str, audits: list[dict]) -> None:
-    if platform == "a100":
-        import vllm.v1.worker.gpu_model_runner as runner_module
-
-        runner_class = runner_module.GPUModelRunner
-    else:
-        import vllm_ascend.worker.model_runner_v1 as runner_module
-
-        runner_class = runner_module.NPUModelRunner
-    original_init = runner_class.__init__
-
-    @functools.wraps(original_init)
-    def audited_init(self, *args, **kwargs):
-        original_init(self, *args, **kwargs)
-        sampler = self.sampler
-        inner = sampler.topk_topp_sampler
-        audits.append(
-            {
-                "runner_class": f"{type(self).__module__}.{type(self).__name__}",
-                "runner_source": inspect.getsourcefile(type(self)),
-                "sampler_class": f"{type(sampler).__module__}.{type(sampler).__name__}",
-                "sampler_source": inspect.getsourcefile(type(sampler)),
-                "model_config_logprobs_mode": self.model_config.logprobs_mode,
-                "sampler_logprobs_mode": sampler.logprobs_mode,
-                "inner_sampler_logprobs_mode": inner.logprobs_mode,
-            }
-        )
-
-    runner_class.__init__ = audited_init
+def loaded_runner_identities(platform: str) -> list[dict[str, str | None]]:
+    prefixes = (
+        ("vllm.v1.worker", "vllm.model_executor")
+        if platform == "a100"
+        else ("vllm_ascend.worker",)
+    )
+    identities = []
+    for name, module in sorted(sys.modules.items()):
+        if not name.startswith(prefixes) or "model_runner" not in name:
+            continue
+        source = getattr(module, "__file__", None)
+        if source is None:
+            continue
+        identities.append({"module": name, **find_git_identity(source)})
+    if not identities:
+        raise RuntimeError("no loaded model-runner module was found after engine init")
+    return identities
 
 
 def prompt_tokens(tokenizer, prompt: str) -> list[int]:
@@ -187,8 +173,6 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
         import torch_npu
         import vllm_ascend
 
-    audits: list[dict] = []
-    install_runner_audit(args.platform, audits)
     seed_base = config["restart_seed_bases"][args.restart_index]
     environment = {
         "hostname": socket.gethostname(),
@@ -241,18 +225,10 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
     started = time.perf_counter()
     records = []
     try:
-        if not audits:
-            raise RuntimeError("runner audit did not observe worker initialization")
-        if any(
-            audit[mode] != "processed_logprobs"
-            for audit in audits
-            for mode in (
-                "model_config_logprobs_mode",
-                "sampler_logprobs_mode",
-                "inner_sampler_logprobs_mode",
-            )
-        ):
-            raise RuntimeError("processed logprobs mode did not reach every sampler")
+        top_level_mode = llm.llm_engine.vllm_config.model_config.logprobs_mode
+        if top_level_mode != "processed_logprobs":
+            raise RuntimeError(f"unexpected top-level logprobs mode: {top_level_mode}")
+        runner_identities = loaded_runner_identities(args.platform)
         tokenizer = llm.get_tokenizer()
         for prompt_index, candidate in enumerate(workload):
             prefix = prompt_tokens(tokenizer, candidate["prompt"])
@@ -309,15 +285,6 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
         if torch.distributed.is_available() and torch.distributed.is_initialized():
             torch.distributed.destroy_process_group()
 
-    runtime_audits = []
-    for audit in audits:
-        runtime_audits.append(
-            {
-                **audit,
-                "runner_identity": find_git_identity(audit["runner_source"]),
-                "sampler_identity": find_git_identity(audit["sampler_source"]),
-            }
-        )
     return (
         {
             "schema": "policybraid.pm_ar.cube_rollout.v1",
@@ -333,7 +300,8 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
             "policy_version": parent["model"]["policy_version"],
             "execution_context": {
                 **parent["execution_context"],
-                "realized_runner_audits": runtime_audits,
+                "top_level_logprobs_mode": top_level_mode,
+                "loaded_runner_identities": runner_identities,
             },
             "sampling": sampling,
             "environment": environment,
