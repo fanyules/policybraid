@@ -1,0 +1,2901 @@
+{
+  "backend_difference_used": false,
+  "candidates_sha256": "901e710a842621d0b4bf1639da080502cf29a0fce699732c4e94efc1d0c3f085",
+  "config_sha256": "4e44922bb5e40999aa36f7e677f97e158cd5366f25c245267c7dc32fc3535a75",
+  "created_at": "2026-08-28T08:01:59.774529+00:00",
+  "eligibility": [
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-000",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-001",
+      "reward_counts": {
+        "0": 2,
+        "1": 6
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-002",
+      "reward_counts": {
+        "0": 6,
+        "1": 2
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-003",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-004",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-005",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-006",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-007",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-008",
+      "reward_counts": {
+        "0": 5,
+        "1": 3
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-009",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-010",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-011",
+      "reward_counts": {
+        "0": 5,
+        "1": 3
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-012",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-013",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-014",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-015",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-016",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-017",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-018",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-019",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-020",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-021",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-022",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-023",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-024",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-025",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-026",
+      "reward_counts": {
+        "0": 2,
+        "1": 6
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-027",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-028",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-029",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-030",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-031",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-032",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-033",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-034",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-035",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-036",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-037",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-038",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-039",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-040",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-041",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-042",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-043",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-044",
+      "reward_counts": {
+        "0": 5,
+        "1": 3
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-045",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-046",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "code-047",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-048",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-049",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-050",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-051",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-052",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-053",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-054",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-055",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-056",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-057",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-058",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-059",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-060",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-061",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-062",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "code-063",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "code_unit_tests",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-000",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-001",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-002",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-003",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-004",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-005",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-006",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-007",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-008",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-009",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-010",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-011",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-012",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-013",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-014",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-015",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-016",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "json-017",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "json-018",
+      "reward_counts": {
+        "0": 6,
+        "1": 2
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-019",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-020",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "json-021",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-022",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-023",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-024",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-025",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-026",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-027",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-028",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "json-029",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-030",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-031",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-032",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-033",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-034",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-035",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-036",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-037",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-038",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-039",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-040",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-041",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-042",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-043",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-044",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-045",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-046",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-047",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-048",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-049",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-050",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-051",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-052",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-053",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-054",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-055",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-056",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-057",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-058",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-059",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-060",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-061",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-062",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "json-063",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "json_schema_tool",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-000",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-001",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-002",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-003",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-004",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-005",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-006",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-007",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-008",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-009",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-010",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-011",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-012",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-013",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-014",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-015",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-016",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-017",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-018",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-019",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-020",
+      "reward_counts": {
+        "0": 3,
+        "1": 5
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-021",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-022",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-023",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-024",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-025",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-026",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-027",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-028",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-029",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-030",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-031",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-032",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-033",
+      "reward_counts": {
+        "0": 2,
+        "1": 6
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-034",
+      "reward_counts": {
+        "0": 1,
+        "1": 7
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-035",
+      "reward_counts": {
+        "0": 2,
+        "1": 6
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-036",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-037",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-038",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-039",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-040",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-041",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-042",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-043",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-044",
+      "reward_counts": {
+        "0": 5,
+        "1": 3
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-045",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-046",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-047",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-048",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-049",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-050",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-051",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-052",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-053",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-054",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-055",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "logic-056",
+      "reward_counts": {
+        "0": 4,
+        "1": 4
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-057",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-058",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-059",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-060",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-061",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-062",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "logic-063",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "choice_logic",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-000",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-001",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-002",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-003",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-004",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-005",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "math-006",
+      "reward_counts": {
+        "0": 7,
+        "1": 1
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-007",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-008",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-009",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-010",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-011",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-012",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-013",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-014",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-015",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-016",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-017",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-018",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-019",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-020",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-021",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-022",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-023",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": true,
+      "nonzero_reward_variance": true,
+      "prompt_id": "math-024",
+      "reward_counts": {
+        "0": 5,
+        "1": 3
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-025",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-026",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-027",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-028",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-029",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-030",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-031",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-032",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-033",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-034",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-035",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-036",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-037",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-038",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-039",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-040",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-041",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-042",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-043",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-044",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-045",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-046",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-047",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-048",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-049",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-050",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-051",
+      "reward_counts": {
+        "1": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-052",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-053",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-054",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-055",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-056",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-057",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-058",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-059",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-060",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-061",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-062",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    },
+    {
+      "complete": true,
+      "eligible": false,
+      "nonzero_reward_variance": false,
+      "prompt_id": "math-063",
+      "reward_counts": {
+        "0": 8
+      },
+      "task_family": "exact_math",
+      "verifier_healthy": true
+    }
+  ],
+  "family_counts": {
+    "choice_logic": {
+      "eligible": 13,
+      "required": 32
+    },
+    "code_unit_tests": {
+      "eligible": 30,
+      "required": 32
+    },
+    "exact_math": {
+      "eligible": 2,
+      "required": 32
+    },
+    "json_schema_tool": {
+      "eligible": 4,
+      "required": 32
+    }
+  },
+  "schema": "policybraid.pm_a.screening_adjudication.v1",
+  "screening_sha256": "a316c7aba234d0b62528f280bdff6dd80b167c910367e1cc6aab4cf1bf1c741e",
+  "screening_trajectories_excluded": true,
+  "selected_count": 0,
+  "selected_prompt_ids": [],
+  "selection_inputs": [
+    "verifier_healthy",
+    "nonzero_reward_variance"
+  ],
+  "status": "workload_insufficient"
+}

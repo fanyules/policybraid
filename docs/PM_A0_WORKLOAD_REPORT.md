@@ -49,3 +49,31 @@ The original candidate file and raw screening remain immutable under
 `results/pm_a/screening/candidate_set_856df3c8/`. Screening trajectories remain
 excluded. No PM-A1 or 910B scientific run was started.
 
+## Candidate design revision 2
+
+Revision 2 fixed the output-length and hidden-schema problems, but remained
+workload-insufficient:
+
+| Family | Eligible groups | Required |
+|---|---:|---:|
+| Exact math | 2 | 32 |
+| Choice/logic | 13 | 32 |
+| Code unit tests | 30 | 32 |
+| JSON/schema/tool | 4 | 32 |
+
+The short exact-answer contract made many prompts deterministic across the
+eight registered seeds: 61/64 math groups and 50/64 JSON groups had zero
+reward, while many others were uniformly correct. Code was close to the
+registered target but still failed closed. The immutable evidence is under
+`results/pm_a/screening/candidate_set_901e710a/`.
+
+The third and final workload-construction attempt changes the evidence unit,
+not the Gate threshold: each prompt contains several deterministic atomic
+checks and receives their mean score in `[0,1]`. Exact math and logic use four
+independent registered answers; code uses the fraction of hidden unit tests;
+JSON uses exact leaf-path values with an extra-field penalty. This corrects the
+unnecessary binary-reward restriction introduced by the implementation—the
+PM-A protocol only requires deterministic verifiers and nonzero group reward
+variance. All task answers, scoring weights, and parsers are frozen before the
+third A100 screening. If the third set is insufficient, PM-A0 stops for user
+review rather than iterating again.
