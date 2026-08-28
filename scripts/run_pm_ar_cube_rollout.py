@@ -181,6 +181,7 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
     import torch
     import vllm
     from vllm import LLM, SamplingParams
+    from vllm.platforms import current_platform
 
     if args.platform == "910b":
         import torch_npu
@@ -196,6 +197,7 @@ def execute(args: argparse.Namespace) -> tuple[dict, int]:
         "torch_version": torch.__version__,
         "vllm_version": importlib.metadata.version("vllm"),
         "physical_device": args.physical_device,
+        "vllm_platform": str(current_platform),
     }
     if args.platform == "a100":
         environment["device_info"] = command_output(
@@ -378,4 +380,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
