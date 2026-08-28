@@ -1,0 +1,86 @@
+{
+  "schema": "policybraid.pm_ar2.v1",
+  "gate": "PM-AR2",
+  "frozen_at": "2026-08-28T09:30:00+00:00",
+  "parent_protocol": {
+    "path": "configs/pm_ar.json",
+    "compute_host_sha256": "2248f727d0c2aa764f46b571ee218f6e51e0cd7b1f3522f83c7f7031e2bee26a",
+    "noise_lock_path": "results/pm_ar/PM_AR1_NOISE_LOCK.json",
+    "noise_lock_sha256": "427c5940c43e50d4bed0830018fa4529cbc3b172c758d10cd9f02243673e85c3",
+    "u_noise": 0.5699915723397305,
+    "gradient_distance_threshold": 1.139983144679461
+  },
+  "workload": {
+    "path": "workloads/pm_ar_selected.jsonl",
+    "sha256": "bf429ffcac1291516d7602634b74080474be956d84a4526876e66c75c16463cd",
+    "prompts": 108,
+    "samples_per_prompt": 8,
+    "trajectories_per_backend_restart": 864,
+    "restarts_per_backend": 5,
+    "trajectories_per_backend": 4320
+  },
+  "model": {
+    "asset_id": "Qwen/Qwen3-1.7B",
+    "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "precision": "bfloat16",
+    "tensor_parallel_size": 1,
+    "mode": "normal"
+  },
+  "sampling": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": 0,
+    "maximum_continuation_tokens": 128,
+    "group_size": 8
+  },
+  "restart_seed_bases": [
+    24600000,
+    24700000,
+    24800000,
+    24900000,
+    25000000
+  ],
+  "device_schedules": {
+    "a100": [0, 1, 2, 3, 0],
+    "910b": [0, 1, 2, 3, 4]
+  },
+  "execution_context": {
+    "generation": "one_complete_8-sample_prompt_group_per_engine_call",
+    "request_order": "prompt_id_then_sample_id",
+    "packing_schedule": "disabled",
+    "cross_score": "decode_with_pre_force_full_support_capture",
+    "cross_score_pairing": "restart_r_scores_union_of_a100_r_and_910b_r",
+    "distinct_contexts_never_pooled": true
+  },
+  "cross_score_qualification": {
+    "implementation_commit": "6eb2f7dfa8391e44293292fc62fe99dea11d9597",
+    "a100_preflight_path": "results/pm_ar/cross_score_preflight/a100_s0_self.json",
+    "a100_preflight_sha256": "16e3d2ef4ab3693720c3316fed4acd2c05abe0339e1ba1c381dccea93e873073",
+    "a100_max_self_reporter_abs_gap": 0.000002861034317902522,
+    "required_self_reporter_abs_tolerance": 0.00005,
+    "npu_must_qualify_before_cross_backend_use": true
+  },
+  "output_contract": {
+    "trajectory_fields": [
+      "prompt_id",
+      "task_family",
+      "group_id",
+      "sample_id",
+      "seed_id",
+      "source_backend",
+      "physical_device",
+      "restart_id",
+      "execution_context",
+      "policy_version",
+      "token_ids",
+      "reward",
+      "processed_behavior_logprobs",
+      "runtime_identity",
+      "model_manifest"
+    ],
+    "cross_score_paths": ["trainer", "a100_decode", "910b_decode"],
+    "different_free_histories_are_never_aligned_as_kl": true
+  },
+  "blocked_until_complete": ["rtx", "pm_b", "controller", "network_hot_path"]
+}
+

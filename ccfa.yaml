@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_ar2_matched_cube_ready"
+  current: "pm_ar2_910b_cross_score_qualification"
   gate: "PM-AR"
   updated_at: "2026-08-28"
 artifacts:
@@ -21,6 +21,7 @@ artifacts:
   report: "docs/PM_AR1_NOISE_LOCK_REPORT.md"
   adjudication: "results/pm_ar/PM_AR1_NOISE_LOCK.json"
   workload_selection: "results/pm_ar/PM_AR0_SELECTION.json"
+  cross_score_qualification: "docs/PM_AR2_CROSS_SCORE_QUALIFICATION.md"
   predecessor_protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
   predecessor_report: "docs/PM_POLICY_CENSUS_REPORT.md"
   predecessor_adjudication: "results/pm_a/PM_A0_ADJUDICATION.json"
@@ -61,7 +62,7 @@ experiments:
     status: "passed_u_noise_locked"
   - id: "PM-AR2"
     purpose: "Matched A100 and 910B trajectory cube"
-    status: "ready"
+    status: "a100_cross_score_passed_910b_pending"
   - id: "PM-AR3"
     purpose: "Canonical-learner gradient decomposition and C-P adjudication"
     status: "blocked_on_PM_AR2"
