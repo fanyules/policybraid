@@ -91,7 +91,8 @@ seed. Each candidate receives one group of eight samples. Selection may use
 only:
 
 1. whether the candidate verifier itself completed normally; and
-2. whether the eight binary rewards have nonzero variance.
+2. whether the eight deterministic scalar rewards in `[0,1]` have nonzero
+   variance.
 
 Within each family, the first 32 eligible candidates in fixed prompt-ID order
 are selected. Screening trajectories are excluded from every PM-A estimate.

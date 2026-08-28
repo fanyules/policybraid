@@ -8,18 +8,21 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_a0_stopped_workload_insufficient"
-  gate: "PM-A"
+  current: "pm_ar0_maximal_balanced_freeze"
+  gate: "PM-AR"
   updated_at: "2026-08-28"
 artifacts:
   manuscript: null
-  experiments: "configs/pm_a.json"
+  experiments: "configs/pm_ar.json"
   workload_candidates: "workloads/pm_a_candidates.jsonl"
   workload_selected: "workloads/pm_a_selected.jsonl"
-  results: "results/pm_a/"
-  protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
-  report: "docs/PM_POLICY_CENSUS_REPORT.md"
-  adjudication: "results/pm_a/PM_A0_ADJUDICATION.json"
+  results: "results/pm_ar/"
+  protocol: "docs/PM_AR_PROTOCOL.md"
+  report: null
+  adjudication: null
+  predecessor_protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
+  predecessor_report: "docs/PM_POLICY_CENSUS_REPORT.md"
+  predecessor_adjudication: "results/pm_a/PM_A0_ADJUDICATION.json"
   runtime_prerequisite: "docs/RUNTIME_PREREQUISITE.md"
 claims:
   - id: "C-P"
@@ -27,7 +30,7 @@ claims:
       At a fixed checkpoint, heterogeneous rollout runtimes realize
       prompt-dependent behavior-policy differences that alter the canonical
       learner gradient beyond matched execution and resampling noise.
-    status: "not_tested_workload_insufficient"
+    status: "not_tested"
   - id: "C0"
     text: >-
       A completion-driven scheduler over heterogeneous rollout engines changes
@@ -49,6 +52,18 @@ experiments:
   - id: "PM-A1"
     purpose: "A100-only trainer, process, and resampling noise lock"
     status: "not_started_workload_insufficient"
+  - id: "PM-AR0"
+    purpose: "Deterministic maximal-balanced 4x27 workload freeze"
+    status: "in_progress"
+  - id: "PM-AR1"
+    purpose: "A100-only trainer, scoring, and resampling noise lock"
+    status: "blocked_on_PM_AR0"
+  - id: "PM-AR2"
+    purpose: "Matched A100 and 910B trajectory cube"
+    status: "blocked_on_PM_AR1"
+  - id: "PM-AR3"
+    purpose: "Canonical-learner gradient decomposition and C-P adjudication"
+    status: "blocked_on_PM_AR2"
   - id: "PM-A2"
     purpose: "Matched A100 and 910B trajectory cube with union-history scoring"
     status: "blocked_on_PM_A1"
@@ -57,7 +72,7 @@ experiments:
     status: "blocked_on_PM_A2"
   - id: "PM-B"
     purpose: "Scheduling and behavior-mixture causality"
-    status: "blocked_on_PM_A"
+    status: "blocked_on_PM_AR"
   - id: "PM-C"
     purpose: "Held-out prompt-risk controller"
     status: "blocked_on_PM_B"

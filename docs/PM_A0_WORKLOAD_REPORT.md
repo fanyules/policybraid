@@ -1,8 +1,13 @@
 # PM-A0 workload construction report
 
-Status: `WORKLOAD_INSUFFICIENT`  
-Candidate-set SHA-256: `856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c`  
-A100 screening process: complete; 256 candidates × 8 samples  
+Status: `WORKLOAD_INSUFFICIENT`
+
+Initial candidate-set SHA-256: `856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c`
+
+Final revision-3 candidate-set SHA-256: `81261a006addec438ca1677f9fc4f282e99f62c6986d6a1efe7f01961c5007c0`
+
+A100 screening process: complete; 256 candidates × 8 samples
+
 Effect on C-P: none; the scientific claim remains untested
 
 ## Adjudication
