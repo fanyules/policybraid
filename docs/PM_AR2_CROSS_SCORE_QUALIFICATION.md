@@ -1,6 +1,6 @@
 # PM-AR2 decode-context cross-score qualification
 
-Status: **A100 PASS; patched 910B qualification pending**
+Status: **PASS on A100 and patched 910B**
 
 ## Why the first scorer is not used
 
@@ -37,7 +37,23 @@ The A100 path therefore passes. The raw qualification is
 `results/pm_ar/cross_score_preflight/a100_s0_self.json`, SHA-256
 `16e3d2ef4ab3693720c3316fed4acd2c05abe0339e1ba1c381dccea93e873073`.
 
-Patched 910B must independently satisfy the same forced-token, finite-value,
-length, and `5e-5` self-reporter checks before any cross-backend score is used.
-Failure leaves PM-AR2 incomplete and does not become evidence about C-P.
+## Patched 910B self-replay result
 
+On formal restart 0 and all 864 trajectories:
+
+- every forced sequence exactly matched its target token IDs;
+- all captured logprobs were finite and length-aligned;
+- maximum absolute error against the normal 910B decode reporter was
+  `3.6954811549e-6`;
+- the active runner resolved to isolated patch commit
+  `a94bfcb0f4326c443243800111452f496d517c87`;
+- the top-level mode was `processed_logprobs`.
+
+The NPU path therefore passes the same `5e-5` qualification. The raw result is
+`results/pm_ar/cross_score_preflight/910b_r0_self.json`, SHA-256
+`2c59447b2f011b5468c1de29291930f4755d7f2d764af6ff7d15efbcfb62aeb7`.
+
+Two pre-generation audit-import failures remain under
+`results/pm_ar/cube/attempts/`. They were resolved by auditing already loaded
+runner modules after normal engine initialization; neither attempt produced a
+trajectory or occupied an NPU after exit.
