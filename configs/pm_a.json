@@ -60,14 +60,25 @@
     "candidates_per_family": 64,
     "selected_per_family": 32,
     "candidate_generator_seed": 240831,
-    "candidate_design_revision": 2,
-    "candidate_file_sha256": "901e710a842621d0b4bf1639da080502cf29a0fce699732c4e94efc1d0c3f085",
-    "superseded_candidate_file_sha256": "856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c",
+    "candidate_design_revision": 3,
+    "candidate_file_sha256": "81261a006addec438ca1677f9fc4f282e99f62c6986d6a1efe7f01961c5007c0",
+    "superseded_candidate_file_sha256": [
+      "856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c",
+      "901e710a842621d0b4bf1639da080502cf29a0fce699732c4e94efc1d0c3f085"
+    ],
+    "reward_contract": {
+      "range": [0.0, 1.0],
+      "exact_math": "fraction_correct_over_4_registered_items",
+      "choice_logic": "fraction_correct_over_4_registered_items",
+      "code_unit_tests": "fraction_passing_over_5_hidden_tests",
+      "json_schema_tool": "correct_leaf_paths_over_union_of_expected_and_observed_leaf_paths"
+    },
     "screening_seed": 240901,
     "screening_platform": "a100_only",
     "samples_per_candidate": 8,
     "selection_rule": "verifier_healthy_and_nonzero_reward_variance_then_first_32_by_id",
     "screening_trajectories_excluded": true,
+    "final_workload_construction_attempt": true,
     "minimum_valid_nonzero_advantage_groups": 64,
     "minimum_task_families": 2
   },

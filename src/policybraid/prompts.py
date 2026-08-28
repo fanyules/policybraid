@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import hashlib
-import itertools
 import json
 import math
 from collections.abc import Iterable
@@ -39,77 +38,111 @@ def _record(
     }
 
 
+def _integer_options(
+    seed: int, candidate_index: int, item_index: int, expected: int
+) -> list[int]:
+    offsets = (1, -1, 2, -2, 5, -5, 10, -10)
+    distractors = []
+    for offset in offsets:
+        value = expected + offset
+        if value not in distractors and value != expected:
+            distractors.append(value)
+        if len(distractors) == 3:
+            break
+    options = [expected, *distractors]
+    return sorted(
+        options,
+        key=lambda value: _number(
+            seed,
+            "math-r3-option",
+            candidate_index,
+            item_index,
+            value,
+            modulus=2**32,
+        ),
+    )
+
+
 def _math_candidates(seed: int) -> list[dict[str, Any]]:
     records = []
     coprime_moduli = ((5, 7), (7, 9), (8, 11), (11, 13))
     for index in range(CANDIDATES_PER_FAMILY):
-        kind = index // 16
-        if kind == 0:
-            left = 37 + _number(seed, "math", index, "left", modulus=163)
-            right = 19 + _number(seed, "math", index, "right", modulus=97)
-            offset = 11 + _number(seed, "math", index, "offset", modulus=211)
-            divisor = 3 + _number(seed, "math", index, "divisor", modulus=15)
-            expected = (left * right + offset) // divisor
-            question = (
-                f"Compute floor((({left} * {right}) + {offset}) / {divisor})."
-            )
-        elif kind == 1:
-            value = 2 + _number(seed, "math", index, "value", modulus=29)
-            multiplier = 2 + _number(seed, "math", index, "mul", modulus=7)
-            increment = 3 + _number(seed, "math", index, "inc", modulus=31)
-            modulus = 101 + _number(seed, "math", index, "mod", modulus=198)
-            steps = 7 + _number(seed, "math", index, "steps", modulus=6)
-            initial = value
-            for _ in range(steps):
-                value = (multiplier * value + increment) % modulus
-            expected = value
-            question = (
-                f"Let x_0={initial}. For t=0,...,{steps - 1}, set "
-                f"x_(t+1)=({multiplier}*x_t+{increment}) mod {modulus}. "
-                f"Compute x_{steps}."
-            )
-        elif kind == 2:
-            n = 13 + _number(seed, "math", index, "n", modulus=12)
-            k = 3 + _number(seed, "math", index, "k", modulus=4)
-            bonus_n = 7 + _number(seed, "math", index, "bn", modulus=7)
-            bonus_k = 2 + _number(seed, "math", index, "bk", modulus=3)
-            expected = math.comb(n, k) - math.comb(n - 2, k - 2) + math.comb(
-                bonus_n, bonus_k
-            )
-            question = (
-                f"Compute C({n},{k}) - C({n - 2},{k - 2}) + "
-                f"C({bonus_n},{bonus_k}), where C(n,k) is the binomial coefficient."
-            )
-        else:
-            first_modulus, second_modulus = coprime_moduli[index % 4]
-            target = 1 + _number(
-                seed,
-                "math",
-                index,
-                "target",
-                modulus=first_modulus * second_modulus - 1,
-            )
-            first_remainder = target % first_modulus
-            second_remainder = target % second_modulus
-            expected = next(
-                value
-                for value in range(first_modulus * second_modulus)
-                if value % first_modulus == first_remainder
-                and value % second_modulus == second_remainder
-            )
-            question = (
-                "Find the smallest nonnegative integer x such that "
-                f"x mod {first_modulus} = {first_remainder} and "
-                f"x mod {second_modulus} = {second_remainder}."
-            )
+        questions: list[str] = []
+        expected: list[int] = []
+
+        left = 23 + _number(seed, "math-r3", index, "left", modulus=79)
+        right = 11 + _number(seed, "math-r3", index, "right", modulus=43)
+        offset = 7 + _number(seed, "math-r3", index, "offset", modulus=101)
+        divisor = 3 + _number(seed, "math-r3", index, "divisor", modulus=11)
+        answer = (left * right + offset) // divisor
+        expected.append(answer)
+        questions.append(
+            f"floor((({left}*{right})+{offset})/{divisor}); choose from "
+            f"{_integer_options(seed, index, 0, answer)}"
+        )
+
+        value = 2 + _number(seed, "math-r3", index, "value", modulus=19)
+        multiplier = 2 + _number(seed, "math-r3", index, "mul", modulus=5)
+        increment = 3 + _number(seed, "math-r3", index, "inc", modulus=17)
+        modulus = 71 + _number(seed, "math-r3", index, "mod", modulus=80)
+        steps = 4 + _number(seed, "math-r3", index, "steps", modulus=4)
+        initial = value
+        for _ in range(steps):
+            value = (multiplier * value + increment) % modulus
+        expected.append(value)
+        questions.append(
+            f"x_0={initial}, x_(t+1)=({multiplier}*x_t+{increment}) mod "
+            f"{modulus}; find x_{steps}; choose from "
+            f"{_integer_options(seed, index, 1, value)}"
+        )
+
+        n = 10 + _number(seed, "math-r3", index, "n", modulus=8)
+        k = 3 + _number(seed, "math-r3", index, "k", modulus=2)
+        bonus_n = 6 + _number(seed, "math-r3", index, "bn", modulus=5)
+        answer = math.comb(n, k) - math.comb(n - 2, k - 2) + bonus_n
+        expected.append(answer)
+        questions.append(
+            f"C({n},{k})-C({n - 2},{k - 2})+{bonus_n}; choose from "
+            f"{_integer_options(seed, index, 2, answer)}"
+        )
+
+        first_modulus, second_modulus = coprime_moduli[index % 4]
+        target = 1 + _number(
+            seed,
+            "math-r3",
+            index,
+            "target",
+            modulus=first_modulus * second_modulus - 1,
+        )
+        first_remainder = target % first_modulus
+        second_remainder = target % second_modulus
+        answer = next(
+            candidate
+            for candidate in range(first_modulus * second_modulus)
+            if candidate % first_modulus == first_remainder
+            and candidate % second_modulus == second_remainder
+        )
+        expected.append(answer)
+        questions.append(
+            f"smallest nonnegative x with x mod {first_modulus}={first_remainder} "
+            f"and x mod {second_modulus}={second_remainder}; choose from "
+            f"{_integer_options(seed, index, 3, answer)}"
+        )
+
+        prompt = "Solve four independent exact-integer items:\n" + "\n".join(
+            f"{item_index + 1}. {question}"
+            for item_index, question in enumerate(questions)
+        )
+        prompt += (
+            "\nReturn only one line `FINAL: [a,b,c,d]` in item order. "
+            "Do not include reasoning or other text."
+        )
         records.append(
             _record(
                 f"math-{index:03d}",
                 "exact_math",
-                question
-                + " Return only one line in the exact form `FINAL: <integer>`. "
-                "Do not include reasoning or any other text.",
-                {"kind": "exact_integer", "expected": expected},
+                prompt,
+                {"kind": "exact_integer_list", "expected": expected},
             )
         )
     return records
@@ -142,98 +175,117 @@ def _constraint_text(constraint: tuple[Any, ...]) -> str:
     raise ValueError(f"unknown logic constraint: {kind}")
 
 
-def _choice_candidates(seed: int) -> list[dict[str, Any]]:
-    records = []
+def _logic_puzzle(seed: int, puzzle_index: int) -> tuple[str, str]:
     labels = "ABCD"
-    items = tuple("PQRSTU")
-    for index in range(CANDIDATES_PER_FAMILY):
-        target = tuple(
-            sorted(
-                items,
-                key=lambda item: _number(
-                    seed, "logic", index, "target", item, modulus=2**32
-                ),
-            )
-        )
-        swaps = ((0, 1), (2, 3), (4, 5))
-        options = [target]
-        for left, right in swaps:
-            candidate = list(target)
-            candidate[left], candidate[right] = candidate[right], candidate[left]
-            options.append(tuple(candidate))
-        options = sorted(
-            options,
-            key=lambda option: _number(
-                seed, "logic", index, "option", "".join(option), modulus=2**32
+    items = tuple("PQRST")
+    target = tuple(
+        sorted(
+            items,
+            key=lambda item: _number(
+                seed, "logic-r3", puzzle_index, "target", item, modulus=2**32
             ),
         )
+    )
+    swaps = ((0, 1), (1, 2), (3, 4))
+    options = [target]
+    for left, right in swaps:
+        candidate = list(target)
+        candidate[left], candidate[right] = candidate[right], candidate[left]
+        options.append(tuple(candidate))
+    options = sorted(
+        options,
+        key=lambda option: _number(
+            seed,
+            "logic-r3",
+            puzzle_index,
+            "option",
+            "".join(option),
+            modulus=2**32,
+        ),
+    )
 
-        true_constraints: list[tuple[Any, ...]] = []
-        for left in range(len(target)):
-            for right in range(left + 1, len(target)):
-                true_constraints.append(("before", target[left], target[right]))
-                if right - left > 1:
-                    true_constraints.append(
-                        ("not_adjacent", target[left], target[right])
-                    )
-        true_constraints.extend(
-            ("immediately_before", target[position], target[position + 1])
-            for position in range(len(target) - 1)
+    true_constraints: list[tuple[Any, ...]] = []
+    for left in range(len(target)):
+        for right in range(left + 1, len(target)):
+            true_constraints.append(("before", target[left], target[right]))
+            if right - left > 1:
+                true_constraints.append(("not_adjacent", target[left], target[right]))
+    true_constraints.extend(
+        ("immediately_before", target[position], target[position + 1])
+        for position in range(len(target) - 1)
+    )
+    true_constraints.extend(
+        ("position", item, position) for position, item in enumerate(target)
+    )
+    true_constraints.sort(
+        key=lambda constraint: _number(
+            seed,
+            "logic-r3",
+            puzzle_index,
+            "constraint",
+            repr(constraint),
+            modulus=2**32,
         )
-        true_constraints.extend(
-            ("position", item, position) for position, item in enumerate(target)
-        )
-        true_constraints.sort(
-            key=lambda constraint: _number(
-                seed,
-                "logic",
-                index,
-                "constraint",
-                repr(constraint),
-                modulus=2**32,
-            )
-        )
-        selected: list[tuple[Any, ...]] = []
-        survivors = list(options)
-        for constraint in true_constraints:
-            reduced = [
-                option for option in survivors if _constraint_holds(option, constraint)
-            ]
-            if len(reduced) < len(survivors):
-                selected.append(constraint)
-                survivors = reduced
-            if len(survivors) == 1 and len(selected) >= 4:
-                break
-        for constraint in true_constraints:
-            if len(selected) >= 5:
-                break
-            if constraint not in selected:
-                selected.append(constraint)
-        if survivors != [target]:
-            raise RuntimeError(f"logic candidate {index} does not have a unique option")
+    )
+    selected: list[tuple[Any, ...]] = []
+    survivors = list(options)
+    for constraint in true_constraints:
+        reduced = [
+            option for option in survivors if _constraint_holds(option, constraint)
+        ]
+        if len(reduced) < len(survivors):
+            selected.append(constraint)
+            survivors = reduced
+        if len(survivors) == 1 and len(selected) >= 3:
+            break
+    for constraint in true_constraints:
+        if len(selected) >= 4:
+            break
+        if constraint not in selected:
+            selected.append(constraint)
+    if survivors != [target]:
+        raise RuntimeError(f"logic puzzle {puzzle_index} lacks a unique option")
 
-        answer = labels[options.index(target)]
-        rules = "\n".join(
-            f"{rule_index + 1}. {_constraint_text(constraint)}"
-            for rule_index, constraint in enumerate(selected)
+    answer = labels[options.index(target)]
+    rules = " ".join(
+        f"R{rule_index + 1}: {_constraint_text(constraint)}"
+        for rule_index, constraint in enumerate(selected)
+    )
+    option_text = "; ".join(
+        f"{label}={' '.join(option)}"
+        for label, option in zip(labels, options, strict=True)
+    )
+    return (
+        "Five jobs P,Q,R,S,T are ordered first to fifth. "
+        f"{rules} Which option satisfies all rules? {option_text}",
+        answer,
+    )
+
+
+def _choice_candidates(seed: int) -> list[dict[str, Any]]:
+    records = []
+    for index in range(CANDIDATES_PER_FAMILY):
+        puzzles = [
+            _logic_puzzle(seed, index * 4 + item_index)
+            for item_index in range(4)
+        ]
+        prompt = "Solve four independent ordering questions:\n" + "\n".join(
+            f"{item_index + 1}. {question}"
+            for item_index, (question, _answer) in enumerate(puzzles)
         )
-        option_text = "\n".join(
-            f"{label}. {' '.join(option)}"
-            for label, option in zip(labels, options, strict=True)
-        )
-        prompt = (
-            "Six jobs P, Q, R, S, T, U are placed from first to sixth. "
-            "Which proposed order satisfies every rule?\n"
-            f"{rules}\nOptions:\n{option_text}\n"
-            "Return only one line in the exact form `FINAL: <A|B|C|D>`. "
-            "Do not include reasoning or any other text."
+        prompt += (
+            "\nReturn only one line `FINAL: [A,B,C,D]` in question order. "
+            "Do not include reasoning or other text."
         )
         records.append(
             _record(
                 f"logic-{index:03d}",
                 "choice_logic",
                 prompt,
-                {"kind": "multiple_choice", "expected": answer},
+                {
+                    "kind": "multiple_choice_list",
+                    "expected": [answer for _question, answer in puzzles],
+                },
             )
         )
     return records
@@ -244,37 +296,6 @@ def _sequence(seed: int, *parts: object, length: int, low: int, high: int) -> li
     return [
         low + _number(seed, *parts, position, modulus=width)
         for position in range(length)
-    ]
-
-
-def _longest_alternating(values: list[int]) -> int:
-    best = current = 0
-    previous_sign = 0
-    for value in values:
-        sign = 1 if value > 0 else -1 if value < 0 else 0
-        if sign == 0:
-            current = 0
-        elif current and sign != previous_sign:
-            current += 1
-        else:
-            current = 1
-        previous_sign = sign
-        best = max(best, current)
-    return best
-
-
-def _collapse_runs(text: str) -> str:
-    return "".join(
-        f"{character}{sum(1 for _ in group)}"
-        for character, group in itertools.groupby(text)
-    )
-
-
-def _recent_dedupe(values: list[int], window: int) -> list[int]:
-    return [
-        value
-        for index, value in enumerate(values)
-        if value not in values[max(0, index - window) : index]
     ]
 
 

@@ -14,6 +14,7 @@ SAFE_BUILTINS = {
     "bool": bool,
     "dict": dict,
     "enumerate": enumerate,
+    "float": float,
     "int": int,
     "len": len,
     "list": list,
@@ -57,4 +58,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

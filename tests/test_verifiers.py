@@ -20,6 +20,25 @@ class VerifierTests(unittest.TestCase):
         self.assertEqual(verify_output(candidate, "FINAL: c").reward, 1)
         self.assertEqual(verify_output(candidate, "FINAL: A").reward, 0)
 
+    def test_composite_answers_receive_fractional_credit(self):
+        integer_candidate = {
+            "verifier": {"kind": "exact_integer_list", "expected": [1, 2, 3, 4]}
+        }
+        choice_candidate = {
+            "verifier": {
+                "kind": "multiple_choice_list",
+                "expected": ["A", "B", "C", "D"],
+            }
+        }
+        self.assertEqual(
+            verify_output(integer_candidate, "FINAL: [1, 0, 3, 9]").reward,
+            0.5,
+        )
+        self.assertEqual(
+            verify_output(choice_candidate, "FINAL: [A, B, A, A]").reward,
+            0.5,
+        )
+
     def test_json_is_exact_and_allows_one_fence(self):
         candidate = {
             "verifier": {"kind": "exact_json", "expected": {"a": 1, "b": [2]}}
@@ -30,7 +49,7 @@ class VerifierTests(unittest.TestCase):
         )
         self.assertEqual(
             verify_output(candidate, '{"a":1,"b":[2],"extra":0}').reward,
-            0,
+            2 / 3,
         )
 
     def test_code_runs_registered_tests(self):
@@ -49,10 +68,27 @@ class VerifierTests(unittest.TestCase):
         wrong = "def solve(values):\n    return len(values)"
         malicious = "def solve(values):\n    return (1).__class__"
         self.assertEqual(verify_output(candidate, correct).reward, 1)
-        self.assertEqual(verify_output(candidate, wrong).reward, 0)
+        self.assertEqual(verify_output(candidate, wrong).reward, 1 / 3)
         self.assertEqual(verify_output(candidate, malicious).reward, 0)
+
+    def test_code_reward_is_fraction_of_passing_tests(self):
+        candidate = {
+            "verifier": {
+                "kind": "python_unit_tests",
+                "function": "solve",
+                "tests": [
+                    {"args": [[1, 2]], "expected": 3},
+                    {"args": [[]], "expected": 0},
+                    {"args": [[4]], "expected": 5},
+                    {"args": [[-2, 5]], "expected": 3},
+                ],
+            }
+        }
+        self.assertEqual(
+            verify_output(candidate, "def solve(values):\n    return sum(values)").reward,
+            0.75,
+        )
 
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -58,7 +58,20 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(adjudication["status"], "workload_insufficient")
         self.assertEqual(selected, [])
 
+    def test_fractional_reward_difference_is_eligible(self):
+        candidates, screening = _fixture(40)
+        for sample_id, sample in enumerate(screening["candidates"][0]["samples"]):
+            sample["reward"] = 0.25 if sample_id % 2 == 0 else 0.5
+        adjudication, _selected = adjudicate_screening(
+            candidates, screening, 8, 32
+        )
+        first = next(
+            row
+            for row in adjudication["eligibility"]
+            if row["prompt_id"] == "f0-000"
+        )
+        self.assertTrue(first["eligible"])
+
 
 if __name__ == "__main__":
     unittest.main()
-

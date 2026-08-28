@@ -1,6 +1,6 @@
 # PM-A: heterogeneous behavior-policy census
 
-Status: preregistered; PM-A0 candidate design revision 2 frozen
+Status: preregistered; PM-A0 candidate design revision 3 frozen
 
 Claim adjudicated: C-P only
 
@@ -66,11 +66,25 @@ The formal workload contains 128 prompts: 32 each from exact mathematics,
 choice/logic, code with deterministic unit tests, and JSON/schema/tool
 constraints. The repository deterministically builds 64 candidates per family.
 
-Candidate design revision 1 was adjudicated workload-insufficient before PM-A1
-and is retained in `docs/PM_A0_WORKLOAD_REPORT.md`. Revision 2 is limited to the
-registered answer-contract and difficulty repairs in that report; it does not
-change sampling, selection, learner, statistic, pass threshold, or platform
-scope.
+Candidate design revisions 1 and 2 were adjudicated workload-insufficient
+before PM-A1 and are retained in `docs/PM_A0_WORKLOAD_REPORT.md`. Revision 3 is
+the final construction attempt. It removes an unnecessary implementation-only
+binary-reward restriction by aggregating several precomputed atomic checks per
+prompt; it does not change sampling, selection, learner, statistic, pass
+threshold, or platform scope.
+
+The deterministic reward contract is frozen as follows:
+
+| Family | Atomic checks | Scalar reward |
+|---|---|---|
+| Exact math | four exact integer answers | correct answers / 4 |
+| Choice/logic | four independent ordering choices | correct choices / 4 |
+| Code unit tests | five hidden deterministic cases | passed cases / 5 |
+| JSON/schema/tool | expected and observed leaf paths | exact matching leaves / union of leaf paths |
+
+All rewards are finite in `[0,1]`; unexpected verifier exceptions invalidate
+the candidate rather than producing a reward. If revision 3 is insufficient,
+PM-A0 stops for review instead of constructing a fourth set.
 
 Candidate screening is performed once on A100 with the independent registered
 seed. Each candidate receives one group of eight samples. Selection may use

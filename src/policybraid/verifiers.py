@@ -13,12 +13,20 @@ from typing import Any
 
 @dataclass(frozen=True)
 class Verification:
-    reward: int
+    reward: float
     reason: str
 
 
 _INTEGER_PATTERN = re.compile(r"FINAL\s*:\s*([-+]?\d+)\s*$", re.IGNORECASE)
 _CHOICE_PATTERN = re.compile(r"FINAL\s*:\s*([ABCD])\s*$", re.IGNORECASE)
+_INTEGER_LIST_PATTERN = re.compile(
+    r"FINAL\s*:\s*\[\s*([-+]?\d+(?:\s*,\s*[-+]?\d+)*)\s*\]\s*$",
+    re.IGNORECASE,
+)
+_CHOICE_LIST_PATTERN = re.compile(
+    r"FINAL\s*:\s*\[\s*([ABCD](?:\s*,\s*[ABCD])*)\s*\]\s*$",
+    re.IGNORECASE,
+)
 _CODE_FENCE_PATTERN = re.compile(
     r"```(?:python|py)?\s*\n(?P<code>.*?)```", re.IGNORECASE | re.DOTALL
 )
@@ -50,6 +58,7 @@ _SAFE_CALLS = {
     "bool",
     "dict",
     "enumerate",
+    "float",
     "int",
     "len",
     "list",
@@ -174,7 +183,12 @@ def _verify_code(text: str, verifier: dict[str, Any]) -> Verification:
     except (json.JSONDecodeError, KeyError, TypeError):
         return Verification(0, "invalid_worker_result")
     expected = [test["expected"] for test in verifier["tests"]]
-    return Verification(int(actual == expected), "passed" if actual == expected else "failed_tests")
+    correct = sum(observed == target for observed, target in zip(actual, expected, strict=True))
+    reward = correct / len(expected)
+    return Verification(
+        reward,
+        "passed" if correct == len(expected) else f"failed_tests:{correct}/{len(expected)}",
+    )
 
 
 def _exact_json(text: str) -> Any:
@@ -189,28 +203,79 @@ def _exact_json(text: str) -> Any:
     return value
 
 
+def _leaf_map(value: Any, prefix: tuple[Any, ...] = ()) -> dict[tuple[Any, ...], Any]:
+    if isinstance(value, dict):
+        leaves: dict[tuple[Any, ...], Any] = {}
+        for key, item in value.items():
+            leaves.update(_leaf_map(item, (*prefix, key)))
+        return leaves
+    if isinstance(value, list):
+        leaves = {}
+        for index, item in enumerate(value):
+            leaves.update(_leaf_map(item, (*prefix, index)))
+        return leaves
+    return {prefix: value}
+
+
+def _fractional_match(observed: list[Any], expected: list[Any]) -> Verification:
+    if len(observed) != len(expected):
+        return Verification(0.0, "wrong_answer_count")
+    correct = sum(left == right for left, right in zip(observed, expected, strict=True))
+    reward = correct / len(expected)
+    return Verification(
+        reward,
+        "passed" if correct == len(expected) else f"partial:{correct}/{len(expected)}",
+    )
+
+
 def verify_output(candidate: dict[str, Any], output: str) -> Verification:
     verifier = candidate["verifier"]
     kind = verifier["kind"]
     if kind == "exact_integer":
         match = _INTEGER_PATTERN.search(output.strip())
         if not match:
-            return Verification(0, "missing_final_integer")
+            return Verification(0.0, "missing_final_integer")
         passed = int(match.group(1)) == int(verifier["expected"])
-        return Verification(int(passed), "passed" if passed else "wrong_integer")
+        return Verification(float(passed), "passed" if passed else "wrong_integer")
+    if kind == "exact_integer_list":
+        match = _INTEGER_LIST_PATTERN.search(output.strip())
+        if not match:
+            return Verification(0.0, "missing_final_integer_list")
+        observed = [int(item.strip()) for item in match.group(1).split(",")]
+        return _fractional_match(observed, verifier["expected"])
     if kind == "multiple_choice":
         match = _CHOICE_PATTERN.search(output.strip())
         if not match:
-            return Verification(0, "missing_final_choice")
+            return Verification(0.0, "missing_final_choice")
         passed = match.group(1).upper() == verifier["expected"]
-        return Verification(int(passed), "passed" if passed else "wrong_choice")
+        return Verification(float(passed), "passed" if passed else "wrong_choice")
+    if kind == "multiple_choice_list":
+        match = _CHOICE_LIST_PATTERN.search(output.strip())
+        if not match:
+            return Verification(0.0, "missing_final_choice_list")
+        observed = [item.strip().upper() for item in match.group(1).split(",")]
+        return _fractional_match(observed, verifier["expected"])
     if kind == "exact_json":
         try:
             observed = _exact_json(output)
         except (json.JSONDecodeError, ValueError):
-            return Verification(0, "invalid_json")
-        passed = observed == verifier["expected"]
-        return Verification(int(passed), "passed" if passed else "wrong_json")
+            return Verification(0.0, "invalid_json")
+        expected_leaves = _leaf_map(verifier["expected"])
+        observed_leaves = _leaf_map(observed)
+        paths = set(expected_leaves) | set(observed_leaves)
+        if not paths:
+            return Verification(1.0, "passed")
+        correct = sum(
+            path in expected_leaves
+            and path in observed_leaves
+            and expected_leaves[path] == observed_leaves[path]
+            for path in paths
+        )
+        reward = correct / len(paths)
+        return Verification(
+            reward,
+            "passed" if correct == len(paths) else f"partial_json:{correct}/{len(paths)}",
+        )
     if kind == "python_unit_tests":
         return _verify_code(output, verifier)
     raise ValueError(f"unsupported verifier kind: {kind}")
@@ -226,8 +291,20 @@ def validate_candidate(candidate: dict[str, Any]) -> None:
     kind = verifier.get("kind")
     if kind == "exact_integer" and not isinstance(verifier.get("expected"), int):
         raise ValueError("exact-integer verifier lacks an integer answer")
+    if kind == "exact_integer_list" and not (
+        isinstance(verifier.get("expected"), list)
+        and len(verifier["expected"]) == 4
+        and all(isinstance(value, int) for value in verifier["expected"])
+    ):
+        raise ValueError("exact-integer-list verifier requires four integers")
     if kind == "multiple_choice" and verifier.get("expected") not in "ABCD":
         raise ValueError("multiple-choice verifier lacks a valid answer")
+    if kind == "multiple_choice_list" and not (
+        isinstance(verifier.get("expected"), list)
+        and len(verifier["expected"]) == 4
+        and all(value in "ABCD" for value in verifier["expected"])
+    ):
+        raise ValueError("multiple-choice-list verifier requires four choices")
     if kind == "exact_json":
         json.dumps(verifier["expected"], allow_nan=False)
     if kind == "python_unit_tests":
@@ -239,9 +316,10 @@ def validate_candidate(candidate: dict[str, Any]) -> None:
             json.dumps(test, allow_nan=False)
     if kind not in {
         "exact_integer",
+        "exact_integer_list",
         "multiple_choice",
+        "multiple_choice_list",
         "exact_json",
         "python_unit_tests",
     }:
         raise ValueError(f"unknown verifier kind: {kind}")
-

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from collections import Counter
+import math
+from numbers import Real
 from typing import Any
 
 from policybraid.prompts import FAMILIES
@@ -41,8 +43,18 @@ def adjudicate_screening(
             sample.get("verifier_status") == "completed" for sample in samples
         )
         rewards = [sample.get("reward") for sample in samples]
-        rewards_valid = complete and all(reward in (0, 1) for reward in rewards)
-        nonzero_variance = rewards_valid and len(set(rewards)) == 2
+        rewards_valid = complete and all(
+            isinstance(reward, Real)
+            and not isinstance(reward, bool)
+            and math.isfinite(float(reward))
+            and 0.0 <= float(reward) <= 1.0
+            for reward in rewards
+        )
+        nonzero_variance = rewards_valid and (
+            max(float(reward) for reward in rewards)
+            - min(float(reward) for reward in rewards)
+            > 1e-12
+        )
         eligibility.append(
             {
                 "prompt_id": prompt_id,
@@ -90,4 +102,3 @@ def adjudicate_screening(
         "eligibility": sorted(eligibility, key=lambda record: record["prompt_id"]),
     }
     return adjudication, selected
-
