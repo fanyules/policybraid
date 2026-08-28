@@ -1,6 +1,6 @@
 # PM-A: heterogeneous behavior-policy census
 
-Status: preregistered; PM-A0 candidate design revision 3 frozen
+Status: closed at PM-A0 (`workload_insufficient`); PM-A1--PM-A3 not started
 
 Claim adjudicated: C-P only
 

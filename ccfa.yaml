@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_a0_candidate_revision_3_screening"
+  current: "pm_a0_stopped_workload_insufficient"
   gate: "PM-A"
   updated_at: "2026-08-28"
 artifacts:
@@ -19,6 +19,7 @@ artifacts:
   results: "results/pm_a/"
   protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
   report: "docs/PM_POLICY_CENSUS_REPORT.md"
+  adjudication: "results/pm_a/PM_A0_ADJUDICATION.json"
   runtime_prerequisite: "docs/RUNTIME_PREREQUISITE.md"
 claims:
   - id: "C-P"
@@ -26,7 +27,7 @@ claims:
       At a fixed checkpoint, heterogeneous rollout runtimes realize
       prompt-dependent behavior-policy differences that alter the canonical
       learner gradient beyond matched execution and resampling noise.
-    status: "testing"
+    status: "not_tested_workload_insufficient"
   - id: "C0"
     text: >-
       A completion-driven scheduler over heterogeneous rollout engines changes
@@ -44,10 +45,10 @@ experiments:
     status: "passed_on_side_branch"
   - id: "PM-A0"
     purpose: "Protocol, model, execution-context, learner, and workload freeze"
-    status: "final_candidate_revision_frozen_pending_screening"
+    status: "stopped_workload_insufficient"
   - id: "PM-A1"
     purpose: "A100-only trainer, process, and resampling noise lock"
-    status: "blocked_on_PM_A0"
+    status: "not_started_workload_insufficient"
   - id: "PM-A2"
     purpose: "Matched A100 and 910B trajectory cube with union-history scoring"
     status: "blocked_on_PM_A1"

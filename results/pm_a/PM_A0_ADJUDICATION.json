@@ -1,0 +1,38 @@
+{
+  "schema": "policybraid.pm_a0.workload_adjudication.v1",
+  "created_at": "2026-08-28T08:16:00+00:00",
+  "gate": "PM-A0",
+  "status": "workload_insufficient_stopped",
+  "claim_c_p": "not_tested_workload_insufficient",
+  "final_candidate_set": {
+    "repository_commit": "f06ace73d86880b56a2b9a1dca8513681e2d31d4",
+    "candidate_sha256": "81261a006addec438ca1677f9fc4f282e99f62c6986d6a1efe7f01961c5007c0",
+    "config_sha256": "4481015e484a3b695587b005bca1a59fd62554cef4cc258b60d567f8e51cd9b8",
+    "screening_sha256": "61c8407b2ea43f98b18d0f32524f614e483fd91898f500f780edfbc5443a1ce0",
+    "adjudication_sha256": "6fd44aeb4c9e174fb7ad186fe6e0aad863a61331b2f025a65c72a784560341da",
+    "candidate_count": 256,
+    "samples_per_candidate": 8,
+    "verifier_error_count": 0,
+    "family_counts": {
+      "exact_math": {"eligible": 38, "required": 32},
+      "choice_logic": {"eligible": 27, "required": 32},
+      "code_unit_tests": {"eligible": 33, "required": 32},
+      "json_schema_tool": {"eligible": 33, "required": 32}
+    }
+  },
+  "prior_candidate_sets": [
+    {
+      "candidate_sha256": "856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c",
+      "status": "workload_insufficient"
+    },
+    {
+      "candidate_sha256": "901e710a842621d0b4bf1639da080502cf29a0fce699732c4e94efc1d0c3f085",
+      "status": "workload_insufficient"
+    }
+  ],
+  "selected_workload_created": false,
+  "pm_a1_started": false,
+  "910b_scientific_run_started": false,
+  "stop_reason": "choice_logic supplied 27 of 32 required nonzero-variance groups in the final registered construction attempt",
+  "fourth_workload_revision_authorized": false
+}

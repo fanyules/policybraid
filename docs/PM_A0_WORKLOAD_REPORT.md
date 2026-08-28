@@ -77,3 +77,24 @@ PM-A protocol only requires deterministic verifiers and nonzero group reward
 variance. All task answers, scoring weights, and parsers are frozen before the
 third A100 screening. If the third set is insufficient, PM-A0 stops for user
 review rather than iterating again.
+
+## Final candidate design revision 3
+
+Revision 3 completed all 2,048 A100 samples with zero verifier errors. Its
+registered adjudication was:
+
+| Family | Eligible groups | Required | Result |
+|---|---:|---:|---|
+| Exact math | 38 | 32 | sufficient |
+| Choice/logic | 27 | 32 | insufficient |
+| Code unit tests | 33 | 32 | sufficient |
+| JSON/schema/tool | 33 | 32 | sufficient |
+
+Because every family was required to contribute 32 prompts, the five-prompt
+logic shortfall cannot be filled with surplus prompts from another family.
+Revision 3 is consequently `WORKLOAD_INSUFFICIENT`, no selected 128-prompt file
+was produced, and the registered no-fourth-attempt rule closes PM-A0. The raw
+evidence is under `results/pm_a/screening/candidate_set_81261a00/`.
+
+This outcome does not adjudicate C-P. PM-A1--PM-A3 and all 910B scientific runs
+were never started.
