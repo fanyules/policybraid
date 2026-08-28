@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "policybraid"
+version = "0.1.0"
+description = "Heterogeneous behavior-policy census for RL rollout runtimes"
+requires-python = ">=3.10"
+dependencies = ["numpy", "torch"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

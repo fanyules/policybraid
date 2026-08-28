@@ -1,0 +1,127 @@
+{
+  "schema": "policybraid.pm_a.v1",
+  "gate": "PM-A",
+  "claim_under_test": "C-P",
+  "frozen_at": "2026-08-28",
+  "scope": {
+    "platforms": ["a100", "ascend_910b_patched"],
+    "excluded_until_pass": [
+      "controller",
+      "online_lora_transfer",
+      "first_k_network_scheduling",
+      "consistency_mode",
+      "rtx"
+    ]
+  },
+  "model": {
+    "asset_id": "Qwen/Qwen3-1.7B",
+    "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "manifest": "configs/model_asset_qwen3_1_7b.json",
+    "precision": "bfloat16",
+    "tensor_parallel_size": 1,
+    "policy_version": "pm-a-fixed-checkpoint"
+  },
+  "execution_context": {
+    "mode": "normal",
+    "batch_composition": "one_complete_grpo_group_per_engine_call",
+    "batch_size": 8,
+    "bucket_size": 8,
+    "request_order": "prompt_id_then_sample_id",
+    "graph_mode": "platform_recommended_normal_mode_recorded_per_call",
+    "tensor_parallel_size": 1,
+    "packing_schedule": "disabled",
+    "runtime_version": "record_exact_at_run_time",
+    "physical_device": "record_exact_at_run_time",
+    "context_strata_policy": "never_pool_distinct_contexts_as_backend_effect"
+  },
+  "sampling": {
+    "primary": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "top_k": 0,
+      "max_continuation_tokens": 128,
+      "group_size": 8
+    },
+    "stress_secondary_only": {
+      "temperature": 1.3,
+      "top_p": 0.95,
+      "top_k": 0,
+      "max_continuation_tokens": 128,
+      "group_size": 8
+    }
+  },
+  "workload": {
+    "families": [
+      "exact_math",
+      "choice_logic",
+      "code_unit_tests",
+      "json_schema_tool"
+    ],
+    "candidates_per_family": 64,
+    "selected_per_family": 32,
+    "candidate_generator_seed": 240831,
+    "candidate_file_sha256": "856df3c82abaac6d09d5481606b546151a147d564d9bbcdcc000679457824a7c",
+    "screening_seed": 240901,
+    "screening_platform": "a100_only",
+    "samples_per_candidate": 8,
+    "selection_rule": "verifier_healthy_and_nonzero_reward_variance_then_first_32_by_id",
+    "screening_trajectories_excluded": true,
+    "minimum_valid_nonzero_advantage_groups": 64,
+    "minimum_task_families": 2
+  },
+  "learner": {
+    "backend": "a100",
+    "adapter": "lora",
+    "rank": 8,
+    "alpha": 8,
+    "dropout": 0.0,
+    "target_modules": ["q_proj", "v_proj"],
+    "bias": "none",
+    "base_weights_frozen": true,
+    "behavior_logprob_detached": true,
+    "gradient_coordinate_order": "lexicographic_parameter_name_then_storage_order"
+  },
+  "pm_a1_noise_lock": {
+    "fresh_learner_processes": 5,
+    "a100_engine_restarts": 5,
+    "anchor_prompts": 32,
+    "a100_resample_groups_per_prompt": 2,
+    "restart_policy": "sequential",
+    "device_policy": "record_physical_device_no_concurrent_reuse",
+    "distance": "l2(g1-g2)/(l2(g1)+epsilon)",
+    "u_noise": "max(upper95_trainer,upper95_a100_process,upper95_a100_resample)",
+    "lock_before_910b_scientific_results": true
+  },
+  "pm_a2_cube": {
+    "prompts": 128,
+    "samples_per_prompt": 8,
+    "trajectories_per_platform_restart": 1024,
+    "fresh_restarts_per_platform": 5,
+    "trajectories_per_platform": 5120,
+    "union_history_cross_score": ["trainer", "a100", "ascend_910b_patched"],
+    "pm_rq_sentinel_tolerance": 0.00005
+  },
+  "statistics": {
+    "unit": "prompt",
+    "bootstrap": "task_stratified_paired_restart_device_prompt",
+    "confidence_level": 0.95,
+    "long_weight_accumulator": "cpu_float64_logsumexp",
+    "prompt_risk": "p95_token_abs_logprob_gap"
+  },
+  "pass": {
+    "all_pm_rq_sentinels_pass": true,
+    "conditional_gap_exceeds_both_self_noise": true,
+    "gradient_distance_lower95_min": 0.05,
+    "gradient_distance_lower95_noise_multiplier": 2.0,
+    "minimum_restarts_above_threshold": 4,
+    "total_restarts": 5,
+    "mixed_group_composition": {"a100": 4, "ascend_910b_patched": 4},
+    "mixed_group_ess_fraction_lower95_min": 0.5,
+    "minimum_valid_groups": 64,
+    "minimum_families": 2,
+    "prompt_risk_iqr_over_process_mad_min": 2.0,
+    "prompt_risk_half_split_spearman_lower95_min": 0.3,
+    "minimum_replicating_families": 2,
+    "must_hold_in_primary_sampling": true
+  }
+}

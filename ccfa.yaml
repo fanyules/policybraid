@@ -1,0 +1,63 @@
+version: "0.1.0"
+project:
+  title: "PolicyBraid: Behavior-Policy-Aware Heterogeneous RL Rollouts"
+  short_name: "PolicyBraid"
+  root: "."
+target_venue:
+  name: "CCF-A systems venue"
+  year: "TBD"
+  mode: "experiment_only"
+stage:
+  current: "pm_a_protocol_and_workload_freeze"
+  gate: "PM-A"
+  updated_at: "2026-08-28"
+artifacts:
+  manuscript: null
+  experiments: "configs/pm_a.json"
+  workload_candidates: "workloads/pm_a_candidates.jsonl"
+  workload_selected: "workloads/pm_a_selected.jsonl"
+  results: "results/pm_a/"
+  protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
+  report: "docs/PM_POLICY_CENSUS_REPORT.md"
+  runtime_prerequisite: "docs/RUNTIME_PREREQUISITE.md"
+claims:
+  - id: "C-P"
+    text: >-
+      At a fixed checkpoint, heterogeneous rollout runtimes realize
+      prompt-dependent behavior-policy differences that alter the canonical
+      learner gradient beyond matched execution and resampling noise.
+    status: "testing"
+  - id: "C0"
+    text: >-
+      A completion-driven scheduler over heterogeneous rollout engines changes
+      the behavior-policy mixture consumed by a group-based learner.
+    status: "reopened_not_tested"
+  - id: "C1"
+    text: >-
+      A held-out policy-risk budget reduces mixture-induced gradient deviation
+      while retaining at least 1.30x effective rollout throughput over
+      A100-only.
+    status: "reopened_not_tested"
+experiments:
+  - id: "PM-RQ"
+    purpose: "Production-runtime probability prerequisite"
+    status: "passed_on_side_branch"
+  - id: "PM-A0"
+    purpose: "Protocol, model, execution-context, learner, and workload freeze"
+    status: "in_progress"
+  - id: "PM-A1"
+    purpose: "A100-only trainer, process, and resampling noise lock"
+    status: "blocked_on_PM_A0"
+  - id: "PM-A2"
+    purpose: "Matched A100 and 910B trajectory cube with union-history scoring"
+    status: "blocked_on_PM_A1"
+  - id: "PM-A3"
+    purpose: "Canonical-learner GRPO gradient decomposition and adjudication"
+    status: "blocked_on_PM_A2"
+  - id: "PM-B"
+    purpose: "Scheduling and behavior-mixture causality"
+    status: "blocked_on_PM_A"
+  - id: "PM-C"
+    purpose: "Held-out prompt-risk controller"
+    status: "blocked_on_PM_B"
+
