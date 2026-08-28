@@ -1,6 +1,6 @@
 # PM-A: heterogeneous behavior-policy census
 
-Status: preregistered; PM-A0 workload freeze in progress  
+Status: preregistered; PM-A0 candidate design revision 2 frozen  
 Claim adjudicated: C-P only  
 Platforms in the primary gate: A100 and patched Ascend 910B
 
@@ -63,6 +63,12 @@ before vectors are flattened.
 The formal workload contains 128 prompts: 32 each from exact mathematics,
 choice/logic, code with deterministic unit tests, and JSON/schema/tool
 constraints. The repository deterministically builds 64 candidates per family.
+
+Candidate design revision 1 was adjudicated workload-insufficient before PM-A1
+and is retained in `docs/PM_A0_WORKLOAD_REPORT.md`. Revision 2 is limited to the
+registered answer-contract and difficulty repairs in that report; it does not
+change sampling, selection, learner, statistic, pass threshold, or platform
+scope.
 
 Candidate screening is performed once on A100 with the independent registered
 seed. Each candidate receives one group of eight samples. Selection may use
@@ -262,4 +268,3 @@ random placement.
 Existing artifacts are never overwritten. A rerun uses a new registered run
 ID and remains visible. The order above is a scientific control: step 7 cannot
 begin on 910B until step 6 is committed.
-

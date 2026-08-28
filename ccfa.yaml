@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_a0_workload_revision"
+  current: "pm_a0_candidate_revision_2_screening"
   gate: "PM-A"
   updated_at: "2026-08-28"
 artifacts:
@@ -44,7 +44,7 @@ experiments:
     status: "passed_on_side_branch"
   - id: "PM-A0"
     purpose: "Protocol, model, execution-context, learner, and workload freeze"
-    status: "workload_insufficient_revision_authorized"
+    status: "candidate_revision_2_frozen_pending_screening"
   - id: "PM-A1"
     purpose: "A100-only trainer, process, and resampling noise lock"
     status: "blocked_on_PM_A0"

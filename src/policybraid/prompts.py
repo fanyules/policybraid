@@ -107,7 +107,8 @@ def _math_candidates(seed: int) -> list[dict[str, Any]]:
                 f"math-{index:03d}",
                 "exact_math",
                 question
-                + " Show any reasoning briefly, then end with exactly `FINAL: <integer>`. ",
+                + " Return only one line in the exact form `FINAL: <integer>`. "
+                "Do not include reasoning or any other text.",
                 {"kind": "exact_integer", "expected": expected},
             )
         )
@@ -224,7 +225,8 @@ def _choice_candidates(seed: int) -> list[dict[str, Any]]:
             "Six jobs P, Q, R, S, T, U are placed from first to sixth. "
             "Which proposed order satisfies every rule?\n"
             f"{rules}\nOptions:\n{option_text}\n"
-            "Show any reasoning briefly, then end with exactly `FINAL: <A|B|C|D>`."
+            "Return only one line in the exact form `FINAL: <A|B|C|D>`. "
+            "Do not include reasoning or any other text."
         )
         records.append(
             _record(
@@ -286,42 +288,22 @@ def _balanced_cut(values: list[int]) -> int:
     return -1
 
 
+def _cyclic_peaks(values: list[int]) -> int:
+    return sum(
+        value > values[(index - 1) % len(values)]
+        and value >= values[(index + 1) % len(values)]
+        for index, value in enumerate(values)
+    )
+
+
 def _code_candidates(seed: int) -> list[dict[str, Any]]:
     records = []
     for index in range(CANDIDATES_PER_FAMILY):
-        task = index // 8
-        variant = index % 8
+        task = index // 16
+        variant = index % 16
         tests: list[dict[str, Any]] = []
         if task == 0:
-            offset = 2 + variant
-            modulus = 97 + 2 * variant
-            specification = (
-                "Return sum((i + OFFSET) * values[i]) modulo MODULUS, using "
-                f"zero-based i, OFFSET={offset}, MODULUS={modulus}."
-            )
-            for test in range(5):
-                values = _sequence(
-                    seed, "code", index, test, length=5 + test, low=-12, high=19
-                )
-                expected = sum(
-                    (position + offset) * value
-                    for position, value in enumerate(values)
-                ) % modulus
-                tests.append({"args": [values], "expected": expected})
-        elif task == 1:
-            specification = (
-                "Return the length of the longest contiguous run whose nonzero "
-                "values alternate sign. A zero breaks a run."
-            )
-            for test in range(5):
-                values = _sequence(
-                    seed, "code", index, test, length=8 + test, low=-4, high=4
-                )
-                tests.append(
-                    {"args": [values], "expected": _longest_alternating(values)}
-                )
-        elif task == 2:
-            window = 2 + variant % 4
+            window = 2 + variant % 5
             specification = (
                 f"For a nonempty integer list, return the smallest zero-based start "
                 f"index of a length-{window} window with maximum sum."
@@ -329,7 +311,7 @@ def _code_candidates(seed: int) -> list[dict[str, Any]]:
             for test in range(5):
                 values = _sequence(
                     seed,
-                    "code",
+                    "code-r2",
                     index,
                     test,
                     length=window + 5 + test,
@@ -341,48 +323,19 @@ def _code_candidates(seed: int) -> list[dict[str, Any]]:
                     for start in range(len(values) - window + 1)
                 ]
                 tests.append({"args": [values], "expected": sums.index(max(sums))})
-        elif task == 3:
-            specification = (
-                "Collapse each maximal run in the input string to the character "
-                "followed by its decimal run length; for example, aaabb becomes a3b2."
-            )
-            alphabet = "abcde"
-            for test in range(5):
-                runs = []
-                for run in range(4 + test):
-                    character = alphabet[(variant + run * 2 + test) % len(alphabet)]
-                    length = 1 + _number(
-                        seed, "code", index, test, run, modulus=4
-                    )
-                    runs.append(character * length)
-                text = "".join(runs)
-                tests.append({"args": [text], "expected": _collapse_runs(text)})
-        elif task == 4:
-            window = 2 + variant % 4
-            specification = (
-                "Scan left to right and return a list containing an input value only "
-                f"when it did not occur in the previous {window} input positions."
-            )
-            for test in range(5):
-                values = _sequence(
-                    seed, "code", index, test, length=9 + test, low=0, high=6
-                )
-                tests.append(
-                    {"args": [values], "expected": _recent_dedupe(values, window)}
-                )
-        elif task == 5:
+        elif task == 1:
             specification = (
                 "Return the smallest cut index i with 1 <= i < len(values) for "
                 "which sum(values[:i]) equals sum(values[i:]); return -1 if absent."
             )
             for test in range(5):
                 values = _sequence(
-                    seed, "code", index, test, length=6 + test, low=-5, high=9
+                    seed, "code-r2", index, test, length=6 + test, low=-5, high=9
                 )
-                if test == 0:
+                if test == variant % 5:
                     values[-1] = sum(values[:-1])
                 tests.append({"args": [values], "expected": _balanced_cut(values)})
-        elif task == 6:
+        elif task == 2:
             shift = 1 + variant
             specification = (
                 f"Split a string on single spaces, rotate every nonempty word left by "
@@ -390,7 +343,10 @@ def _code_candidates(seed: int) -> list[dict[str, Any]]:
             )
             words = ("alpha", "braid", "runtime", "policy", "tensor", "group")
             for test in range(5):
-                chosen = [words[(variant + test + j) % len(words)] for j in range(3)]
+                chosen = [
+                    words[(variant + test + step * 2) % len(words)]
+                    for step in range(3 + test % 2)
+                ]
                 text = " ".join(chosen)
                 expected = " ".join(
                     word[shift % len(word) :] + word[: shift % len(word)]
@@ -398,21 +354,17 @@ def _code_candidates(seed: int) -> list[dict[str, Any]]:
                 )
                 tests.append({"args": [text], "expected": expected})
         else:
-            target = 3 * variant - 5
             specification = (
-                "Return the number of index pairs (i,j) with i < j and "
-                f"values[i] + values[j] == {target}. Count duplicate positions."
+                "Treat the list as circular. Return the number of indices i for which "
+                "values[i] is strictly greater than its previous neighbor and greater "
+                "than or equal to its next neighbor. The first and last elements are "
+                "neighbors. The input has at least three elements."
             )
             for test in range(5):
                 values = _sequence(
-                    seed, "code", index, test, length=8 + test, low=-9, high=12
+                    seed, "code-r2", index, test, length=7 + test, low=-5, high=12
                 )
-                expected = sum(
-                    values[left] + values[right] == target
-                    for left in range(len(values))
-                    for right in range(left + 1, len(values))
-                )
-                tests.append({"args": [values], "expected": expected})
+                tests.append({"args": [values], "expected": _cyclic_peaks(values)})
 
         prompt = (
             "Write Python 3 code defining exactly `def solve(values):` or "
@@ -455,7 +407,9 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             }
             task_text = (
                 f"SKU {sku} has {units} units at integer unit price {unit_price}. "
-                "Create an inventory_summary tool call with sku, units, and subtotal."
+                "Create an inventory_summary tool call with sku, units, and subtotal. "
+                "Required shape: {\"tool\":\"inventory_summary\",\"arguments\":"
+                "{\"sku\":<string>,\"units\":<integer>,\"subtotal\":<integer>}}."
             )
         elif task == 1:
             values = _sequence(
@@ -465,7 +419,8 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             expected = {"even_values": evens, "count": len(evens), "sum": sum(evens)}
             task_text = (
                 f"For values {values}, deduplicate the even values, sort ascending, "
-                "and report even_values, count, and sum."
+                "and report even_values, count, and sum. Required shape: "
+                "{\"even_values\":<array>,\"count\":<integer>,\"sum\":<integer>}."
             )
         elif task == 2:
             raw_name = f"  {names[variant].upper()}-{names[(variant + 3) % 8].lower()}  "
@@ -480,7 +435,9 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             task_text = (
                 f"Normalize the name {raw_name!r} by trimming, lowercasing, and "
                 f"replacing '-' with one space. Scores are {scores}. Return profile "
-                "with name and score_max, plus passed (score_max >= 70)."
+                "with name and score_max, plus passed (score_max >= 70). Required "
+                "shape: {\"profile\":{\"name\":<string>,\"score_max\":<integer>},"
+                "\"passed\":<boolean>}."
             )
         elif task == 3:
             latency = 40 + _number(seed, "json", index, "latency", modulus=180)
@@ -497,7 +454,9 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             task_text = (
                 f"Observed latency is {latency} ms and errors is {errors}. Route to "
                 "fallback iff errors >= 3 or latency > 150; otherwise primary. "
-                "Return a route_request tool call with route, observed_ms, and errors."
+                "Required shape: {\"tool\":\"route_request\",\"arguments\":"
+                "{\"route\":<string>,\"observed_ms\":<integer>,"
+                "\"errors\":<integer>}}."
             )
         elif task == 4:
             matrix = [
@@ -511,7 +470,8 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             }
             task_text = (
                 f"For matrix {matrix}, return each row sum and the zero-based index "
-                "of the first row with the largest sum."
+                "of the first row with the largest sum. Required shape: "
+                "{\"row_sums\":<array>,\"largest_row\":<integer>}."
             )
         elif task == 5:
             roles = ["reader", "writer", "auditor", "operator"]
@@ -531,7 +491,8 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
                 f"Assigned roles are {assigned}. Permissions: reader=[read], "
                 "writer=[read,write], auditor=[read,audit], "
                 "operator=[read,execute]. Deduplicate and sort roles and the union "
-                "of permissions."
+                "of permissions. Required shape: {\"roles\":<array>,"
+                "\"effective_permissions\":<array>}."
             )
         elif task == 6:
             start = 9 + variant
@@ -546,7 +507,10 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             expected = {"segments": offsets, "total_duration": sum(durations)}
             task_text = (
                 f"Starting at offset {start}, lay out consecutive segments with "
-                f"durations {durations}. Return each start/end pair and total_duration."
+                f"durations {durations}. Required shape: "
+                "{\"segments\":"
+                "[{\"start\":<integer>,\"end\":<integer>},...],"
+                "\"total_duration\":<integer>}."
             )
         else:
             values = _sequence(
@@ -565,7 +529,9 @@ def _json_candidates(seed: int) -> list[dict[str, Any]]:
             task_text = (
                 f"Split values {values} at threshold {threshold}: low is < threshold "
                 "and high is >= threshold. Return threshold and nested low/high count "
-                "and sum objects."
+                "and sum objects. Required shape: {\"threshold\":<integer>,"
+                "\"buckets\":{\"low\":{\"count\":<integer>,\"sum\":<integer>},"
+                "\"high\":{\"count\":<integer>,\"sum\":<integer>}}}."
             )
         prompt = (
             task_text
@@ -618,4 +584,3 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
             except json.JSONDecodeError as error:
                 raise ValueError(f"invalid JSON at {path}:{line_number}") from error
     return records
-
