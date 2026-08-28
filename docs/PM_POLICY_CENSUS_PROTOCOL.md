@@ -1,7 +1,9 @@
 # PM-A: heterogeneous behavior-policy census
 
-Status: preregistered; PM-A0 candidate design revision 2 frozen  
-Claim adjudicated: C-P only  
+Status: preregistered; PM-A0 candidate design revision 2 frozen
+
+Claim adjudicated: C-P only
+
 Platforms in the primary gate: A100 and patched Ascend 910B
 
 ## 1. Scientific question and estimand
