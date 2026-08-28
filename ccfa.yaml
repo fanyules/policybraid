@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_ar1_a100_noise_lock_implementation"
+  current: "pm_ar2_matched_cube_ready"
   gate: "PM-AR"
   updated_at: "2026-08-28"
 artifacts:
@@ -18,8 +18,8 @@ artifacts:
   workload_selected: "workloads/pm_a_selected.jsonl"
   results: "results/pm_ar/"
   protocol: "docs/PM_AR_PROTOCOL.md"
-  report: null
-  adjudication: null
+  report: "docs/PM_AR1_NOISE_LOCK_REPORT.md"
+  adjudication: "results/pm_ar/PM_AR1_NOISE_LOCK.json"
   workload_selection: "results/pm_ar/PM_AR0_SELECTION.json"
   predecessor_protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
   predecessor_report: "docs/PM_POLICY_CENSUS_REPORT.md"
@@ -58,10 +58,10 @@ experiments:
     status: "passed"
   - id: "PM-AR1"
     purpose: "A100-only trainer, scoring, and resampling noise lock"
-    status: "implementation_in_progress"
+    status: "passed_u_noise_locked"
   - id: "PM-AR2"
     purpose: "Matched A100 and 910B trajectory cube"
-    status: "blocked_on_PM_AR1"
+    status: "ready"
   - id: "PM-AR3"
     purpose: "Canonical-learner gradient decomposition and C-P adjudication"
     status: "blocked_on_PM_AR2"

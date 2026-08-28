@@ -1,0 +1,39 @@
+{
+  "behavior_score_sha256": [],
+  "config_sha256": "2248f727d0c2aa764f46b571ee218f6e51e0cd7b1f3522f83c7f7031e2bee26a",
+  "created_at": "2026-08-28T09:08:20.148004+00:00",
+  "device_info": "0, NVIDIA A100-PCIE-40GB, GPU-213c4dcf-c8d1-bdef-90d2-4c7b69070e17, 40960 MiB, 570.169\n1, NVIDIA A100-PCIE-40GB, GPU-eec2cf45-11e6-840b-84e3-d11ea6c455db, 40960 MiB, 570.169\n2, NVIDIA A100-PCIE-40GB, GPU-57cecd3e-9e02-dfa9-fdac-94f81bff40a0, 40960 MiB, 570.169\n3, NVIDIA A100-PCIE-40GB, GPU-5decea60-1fb6-e640-6787-0573f14c554f, 40960 MiB, 570.169",
+  "elapsed_seconds": 74.66158705500129,
+  "gradient_elements": 1605632,
+  "gradient_norms": [
+    0.435292512178421
+  ],
+  "hostname": "ubuntu",
+  "labels": [
+    "rollout_reporter"
+  ],
+  "nonzero_advantage_groups": [
+    87
+  ],
+  "objective_values": [
+    0.0057892994310577706
+  ],
+  "peak_cuda_memory_bytes": 6765061632,
+  "physical_device": "GPU-213c4dcf-c8d1-bdef-90d2-4c7b69070e17",
+  "prompt_count": 108,
+  "prompt_gradient_shape": null,
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+  "repository_commit": "4fb34b1bf192c8b92eef3cae16339c55ef4e3f81",
+  "run_index": 0,
+  "schema": "policybraid.pm_ar.learner_gradient.v1",
+  "scope": "all",
+  "selection_sha256": "eb9a33a20446f5cfe8fc78d8b6d74841322edd01d6d9d20ad605e331a4fe8ea1",
+  "status": "success",
+  "target_module_count": 56,
+  "tensor_path": "results/pm_ar/noise/gradients/trainer_r0.pt",
+  "tensor_sha256": "11cce549909ef22b4cbf24f32b96beef210257374c880c186c1dd9d2ff202291",
+  "torch_version": "2.11.0+cu128",
+  "trainable_parameter_count": 1605632,
+  "trajectory_sha256": "2336769edd61a00b4740b4fdabb2f9c766c7fb22a15041504c3d62b86c9be0cd",
+  "transformers_version": "5.5.4"
+}

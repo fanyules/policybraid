@@ -1,0 +1,61 @@
+{
+  "behavior_score_sha256": [
+    "b9e0554f90f848a7069474ab6f437bca1c173e662781dd4cc8e91a5d569deb16",
+    "94665b00f3904463b4c15053b3c59a69a37b6aa952dc931cd5386ba7ea1d824f",
+    "b1d73b093999c81a557aa154a09d434767a39b7244f0b37526ed9ed8ba7f109f",
+    "0ecd72865bf6b34b572939f972b7301840c219761083e2a908a0ac4d34d233ba",
+    "49f22fa5c3c87abd27346d048fa909f70d615a67677131fa21482f13322e7aac"
+  ],
+  "config_sha256": "2248f727d0c2aa764f46b571ee218f6e51e0cd7b1f3522f83c7f7031e2bee26a",
+  "created_at": "2026-08-28T09:06:36.499072+00:00",
+  "device_info": "0, NVIDIA A100-PCIE-40GB, GPU-213c4dcf-c8d1-bdef-90d2-4c7b69070e17, 40960 MiB, 570.169\n1, NVIDIA A100-PCIE-40GB, GPU-eec2cf45-11e6-840b-84e3-d11ea6c455db, 40960 MiB, 570.169\n2, NVIDIA A100-PCIE-40GB, GPU-57cecd3e-9e02-dfa9-fdac-94f81bff40a0, 40960 MiB, 570.169\n3, NVIDIA A100-PCIE-40GB, GPU-5decea60-1fb6-e640-6787-0573f14c554f, 40960 MiB, 570.169",
+  "elapsed_seconds": 105.93059931100288,
+  "gradient_elements": 1605632,
+  "gradient_norms": [
+    0.45613712072372437,
+    0.45611342787742615,
+    0.45613041520118713,
+    0.4560811221599579,
+    0.456124484539032
+  ],
+  "hostname": "ubuntu",
+  "labels": [
+    "a100_scoring_r0",
+    "a100_scoring_r1",
+    "a100_scoring_r2",
+    "a100_scoring_r3",
+    "a100_scoring_r4"
+  ],
+  "nonzero_advantage_groups": [
+    28,
+    28,
+    28,
+    28,
+    28
+  ],
+  "objective_values": [
+    0.0074619618826545775,
+    0.0074619618826545775,
+    0.0074619618826545775,
+    0.0074619618826545775,
+    0.0074619618826545775
+  ],
+  "peak_cuda_memory_bytes": 6515367936,
+  "physical_device": "GPU-213c4dcf-c8d1-bdef-90d2-4c7b69070e17",
+  "prompt_count": 32,
+  "prompt_gradient_shape": null,
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+  "repository_commit": "4fb34b1bf192c8b92eef3cae16339c55ef4e3f81",
+  "run_index": 0,
+  "schema": "policybraid.pm_ar.learner_gradient.v1",
+  "scope": "anchors",
+  "selection_sha256": "eb9a33a20446f5cfe8fc78d8b6d74841322edd01d6d9d20ad605e331a4fe8ea1",
+  "status": "success",
+  "target_module_count": 56,
+  "tensor_path": "results/pm_ar/noise/gradients/scoring_gradients.pt",
+  "tensor_sha256": "0c2e10cf1838530fff4f20873a0c1132dee803fa922dc2d7e3d2f58a2b8d4dde",
+  "torch_version": "2.11.0+cu128",
+  "trainable_parameter_count": 1605632,
+  "trajectory_sha256": "2336769edd61a00b4740b4fdabb2f9c766c7fb22a15041504c3d62b86c9be0cd",
+  "transformers_version": "5.5.4"
+}

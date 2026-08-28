@@ -1,0 +1,53 @@
+{
+  "a100_resample": {
+    "actual_distance": 0.2023672708660041,
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 24150000,
+    "quantiles": {
+      "p50": 0.3554701376664498,
+      "p90": 0.5077834196233432,
+      "p95_higher": 0.5699915723397305,
+      "p99": 0.7610161647118152
+    },
+    "tensor_sha256": [
+      "505b08a8cd30914ff455bf6fc9322ddb41c4c12f5365be35bbe63f91cf23c242",
+      "95984a6b846187264fdbc0777db13b4b15a10e7297f61497f71051218e264eaf"
+    ],
+    "upper95": 0.5699915723397305
+  },
+  "a100_scoring": {
+    "distances_r0_to_r1_r4": [
+      0.0013381479617246006,
+      0.001301674528452551,
+      0.001399329872872624,
+      0.0013219442608305412
+    ],
+    "tensor_sha256": "0c2e10cf1838530fff4f20873a0c1132dee803fa922dc2d7e3d2f58a2b8d4dde",
+    "upper95": 0.001399329872872624
+  },
+  "config_sha256": "2248f727d0c2aa764f46b571ee218f6e51e0cd7b1f3522f83c7f7031e2bee26a",
+  "created_at": "2026-08-28T09:18:05.914438+00:00",
+  "gradient_distance_epsilon": 1e-12,
+  "pm_ar2_unblocked": true,
+  "repository_commit": "4fb34b1bf192c8b92eef3cae16339c55ef4e3f81",
+  "schema": "policybraid.pm_ar.noise_lock.v1",
+  "status": "locked",
+  "trainer_process": {
+    "distances_r0_to_r1_r4": [
+      0.0013034258146375067,
+      0.0013794683481243943,
+      0.0014447144241603006,
+      0.0013759645168144824
+    ],
+    "tensor_sha256": [
+      "11cce549909ef22b4cbf24f32b96beef210257374c880c186c1dd9d2ff202291",
+      "436e83f720c6fffad2afe81c4767bdbf26883ebb47ace7805052a3acbc128b7c",
+      "ac90f2d1f4442e2b73719d594ddc0a6e27082f2b5eab55b1ba96d83501a3824d",
+      "12a72e0b2dc6251ac6d50a1f2625ddcf78e531fb829e88dc3c17675228a6efd6",
+      "80be7c5e2acbfb0e144dbf78f73974a0e3cb23ec40c0eba6f3c48d4b0972fae7"
+    ],
+    "upper95": 0.0014447144241603006
+  },
+  "u_noise": 0.5699915723397305,
+  "u_noise_rule": "max(trainer_upper95,a100_scoring_upper95,a100_resample_upper95)"
+}

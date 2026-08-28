@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-08-28T08:54:58.523788+00:00",
+  "error": "ValueError: invalid literal for int() with base 10: 'input_ids'",
+  "platform": "a100",
+  "repository_commit": "56680b80898e254cddd92819a33582a665b5b1be",
+  "schema": "policybraid.pm_ar.a100_rollout.v1",
+  "seed_group": 0,
+  "status": "incomplete",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/PolicyBraid/scripts/run_pm_ar_a100_rollout.py\", line 261, in main\n    payload, exit_code = execute(args)\n                         ^^^^^^^^^^^^^\n  File \"/data/PolicyBraid/scripts/run_pm_ar_a100_rollout.py\", line 169, in execute\n    prefix = prompt_tokens(tokenizer, candidate[\"prompt\"])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/PolicyBraid/scripts/run_pm_ar_a100_rollout.py\", line 88, in prompt_tokens\n    return [int(token) for token in tokens]\n            ^^^^^^^^^^\nValueError: invalid literal for int() with base 10: 'input_ids'\n"
+}
