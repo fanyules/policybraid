@@ -20,6 +20,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 
 from policybraid.prompts import load_jsonl
+from policybraid.tokenization import token_ids_from_chat_template
 from policybraid.verifiers import verify_output
 
 
@@ -85,7 +86,7 @@ def prompt_tokens(tokenizer, prompt: str) -> list[int]:
         tokens = tokenizer.apply_chat_template(
             messages, tokenize=True, add_generation_prompt=True
         )
-    return [int(token) for token in tokens]
+    return token_ids_from_chat_template(tokens)
 
 
 def sampled_logprobs(sequence) -> list[float]:
@@ -282,4 +283,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
