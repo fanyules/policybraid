@@ -1,0 +1,64 @@
+{
+  "actual_prompt_gradient_shape": [
+    2,
+    108,
+    1605632
+  ],
+  "config_sha256": "cbfa0bb6983d4766857b7d7a1703ed83b9f68d8a8181ebfef8643185c21fd727",
+  "created_at": "2026-08-28T10:56:49.955812+00:00",
+  "cross_score_sha256": {
+    "910b": "cf8929eb0b2a9153906c79dbc3c37e2c3a8a1f41c6d11fa478a9b5f9f9303ad3",
+    "a100": "de78acd5fecc6aa754573c0bfc90e707dbb2e89a5113bc81e89fff15cdeb954a"
+  },
+  "device_info": "0, NVIDIA A100-PCIE-40GB, GPU-213c4dcf-c8d1-bdef-90d2-4c7b69070e17, 40960 MiB, 570.169\n1, NVIDIA A100-PCIE-40GB, GPU-eec2cf45-11e6-840b-84e3-d11ea6c455db, 40960 MiB, 570.169\n2, NVIDIA A100-PCIE-40GB, GPU-57cecd3e-9e02-dfa9-fdac-94f81bff40a0, 40960 MiB, 570.169\n3, NVIDIA A100-PCIE-40GB, GPU-5decea60-1fb6-e640-6787-0573f14c554f, 40960 MiB, 570.169",
+  "elapsed_seconds": 279.4968505729921,
+  "gradient_elements": 1605632,
+  "gradient_norms": [
+    0.435378760099411,
+    0.496612012386322,
+    0.5472484230995178,
+    0.4252820312976837
+  ],
+  "hostname": "ubuntu",
+  "labels": [
+    "g_A_A",
+    "g_A_N",
+    "g_N_A",
+    "g_N_N"
+  ],
+  "model_asset_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "model_verification_sha256": "5566f08cf83b458bee6e7b76e63a532e3f03bd5cf7337516e061040a7f04f4f7",
+  "nonzero_advantage_groups": [
+    92,
+    92,
+    93,
+    93
+  ],
+  "objective_values": [
+    0.0044329142266953435,
+    0.006585775414784223,
+    0.006999331885992888,
+    0.005807851820632264
+  ],
+  "peak_cuda_memory_bytes": 6771139072,
+  "physical_device": "GPU-eec2cf45-11e6-840b-84e3-d11ea6c455db",
+  "prompt_count": 108,
+  "python": "3.12.13 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:38:16) [GCC 14.3.0]",
+  "repository_commit": "c72e8abcd6f940b10693d008ecf0869fa21ad92c",
+  "restart_index": 1,
+  "schema": "policybraid.pm_ar3.learner_gradient.v1",
+  "status": "success",
+  "target_module_count": 56,
+  "tensor_path": "/data/policybraid-artifacts/pm_ar3/gradients/r1.pt",
+  "tensor_sha256": "a780ff6928e73bfa09fd7457d9b1e8e20ba28c95c77f05f037dd8a222ae6bde1",
+  "torch_version": "2.11.0+cu128",
+  "trainable_parameter_count": 1605632,
+  "trainer_score_path": "results/pm_ar/pm_ar3/trainer_scores_r1.json",
+  "trainer_score_sha256": "80eb624be39c1f18b0dfd322de7b11a31264a54f208045986603448932946fd2",
+  "trajectory_count": 1728,
+  "trajectory_sha256": {
+    "910b": "e016076b1f30f9cf3b507880756012f1d35f720c3b7eee7aa5ff95256a150b90",
+    "a100": "d1adacee87cdda57ec59b0dd4c60156434a0938beef588d22fa61ec94bfefe57"
+  },
+  "transformers_version": "5.5.4"
+}

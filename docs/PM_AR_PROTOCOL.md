@@ -1,6 +1,6 @@
 # PM-AR: maximal-balanced scientific re-entry
 
-Status: PM-AR0/PM-AR1 passed; PM-AR2 cube validated; PM-AR3 statistics frozen
+Status: PM-AR3 failed; PolicyBraid stopped under the registered decision rule
 
 Claim under test: C-P
 

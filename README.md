@@ -11,11 +11,13 @@ the requirement of 32 nonzero-variance groups, but choice/logic reached only
 scientific census, controller, online LoRA transfer, first-K networking,
 consistency mode, or RTX experiment was started under PM-A.
 
-The active re-entry Gate is **PM-AR**. It deterministically takes the first 27
-eligible revision-3 prompts per family (108 total), preserves equal family
-weight, and leaves all scientific thresholds unchanged. C-P remains untested
-until PM-AR3. PM-AR1 has locked `U_noise=0.5699915723`; PM-AR2 is now the active
-matched A100/910B census stage.
+The final re-entry Gate **PM-AR** deterministically took the first 27 eligible
+revision-3 prompts per family (108 total), preserved equal family weight, and
+left all scientific thresholds unchanged. PM-AR3 failed its two mandatory
+gradient criteria: the lower 95% bound was `0.18678` against the registered
+`1.13998` boundary, and zero of five restarts crossed that boundary. Under the
+frozen decision rule, PolicyBraid is stopped; PM-B, the controller, RTX, and
+the three-island experiment remain unstarted.
 
 - Protocol: `docs/PM_POLICY_CENSUS_PROTOCOL.md`
 - Frozen configuration: `configs/pm_a.json`
@@ -28,6 +30,9 @@ matched A100/910B census stage.
 - PM-AR configuration: `configs/pm_ar.json`
 - PM-AR1 noise report: `docs/PM_AR1_NOISE_LOCK_REPORT.md`
 - PM-AR1 lock: `results/pm_ar/PM_AR1_NOISE_LOCK.json`
+- PM-AR2 cube report: `docs/PM_AR2_CUBE_REPORT.md`
+- PM-AR final report: `docs/PM_AR_REPORT.md`
+- PM-AR adjudication: `results/pm_ar/PM_AR_ADJUDICATION.json`
 
 The former vLLM-Ascend investigation is intentionally absent from `main`.
 A concise public description is isolated on branch

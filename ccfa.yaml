@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_ar3_gradient_adjudication_ready"
+  current: "stopped_pm_ar3_failed"
   gate: "PM-AR"
   updated_at: "2026-08-28"
 artifacts:
@@ -18,8 +18,8 @@ artifacts:
   workload_selected: "workloads/pm_a_selected.jsonl"
   results: "results/pm_ar/"
   protocol: "docs/PM_AR_PROTOCOL.md"
-  report: "docs/PM_AR2_CUBE_REPORT.md"
-  adjudication: "results/pm_ar/PM_AR2_CUBE_VALIDATION.json"
+  report: "docs/PM_AR_REPORT.md"
+  adjudication: "results/pm_ar/PM_AR_ADJUDICATION.json"
   workload_selection: "results/pm_ar/PM_AR0_SELECTION.json"
   cross_score_qualification: "docs/PM_AR2_CROSS_SCORE_QUALIFICATION.md"
   pm_ar3_statistics: "configs/pm_ar3.json"
@@ -33,18 +33,18 @@ claims:
       At a fixed checkpoint, heterogeneous rollout runtimes realize
       prompt-dependent behavior-policy differences that alter the canonical
       learner gradient beyond matched execution and resampling noise.
-    status: "not_tested"
+    status: "failed_pm_ar"
   - id: "C0"
     text: >-
       A completion-driven scheduler over heterogeneous rollout engines changes
       the behavior-policy mixture consumed by a group-based learner.
-    status: "reopened_not_tested"
+    status: "not_tested_stopped_on_pm_ar"
   - id: "C1"
     text: >-
       A held-out policy-risk budget reduces mixture-induced gradient deviation
       while retaining at least 1.30x effective rollout throughput over
       A100-only.
-    status: "reopened_not_tested"
+    status: "not_tested_stopped_on_pm_ar"
 experiments:
   - id: "PM-RQ"
     purpose: "Production-runtime probability prerequisite"
@@ -66,7 +66,7 @@ experiments:
     status: "passed_cube_validated"
   - id: "PM-AR3"
     purpose: "Canonical-learner gradient decomposition and C-P adjudication"
-    status: "ready_statistics_frozen"
+    status: "failed_stop_policybraid"
   - id: "PM-A2"
     purpose: "Matched A100 and 910B trajectory cube with union-history scoring"
     status: "blocked_on_PM_A1"
@@ -75,7 +75,7 @@ experiments:
     status: "blocked_on_PM_A2"
   - id: "PM-B"
     purpose: "Scheduling and behavior-mixture causality"
-    status: "blocked_on_PM_AR"
+    status: "not_started_stopped_on_PM_AR"
   - id: "PM-C"
     purpose: "Held-out prompt-risk controller"
-    status: "blocked_on_PM_B"
+    status: "not_started_stopped_on_PM_AR"
