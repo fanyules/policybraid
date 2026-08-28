@@ -23,6 +23,10 @@
     ],
     "prompts_per_family": 27,
     "total_prompts": 108,
+    "selected_path": "workloads/pm_ar_selected.jsonl",
+    "selected_sha256": "bf429ffcac1291516d7602634b74080474be956d84a4526876e66c75c16463cd",
+    "selection_manifest_path": "results/pm_ar/PM_AR0_SELECTION.json",
+    "selection_manifest_sha256": "eb9a33a20446f5cfe8fc78d8b6d74841322edd01d6d9d20ad605e331a4fe8ea1",
     "group_size": 8,
     "selection": "eligible_true_then_prompt_id_ascending_first_27_per_family",
     "expected_surplus_count": 23,
@@ -148,4 +152,3 @@
     "must_hold_in_primary_sampling": true
   }
 }
-

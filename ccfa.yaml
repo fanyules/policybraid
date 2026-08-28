@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "pm_ar0_maximal_balanced_freeze"
+  current: "pm_ar1_a100_noise_lock_implementation"
   gate: "PM-AR"
   updated_at: "2026-08-28"
 artifacts:
@@ -20,6 +20,7 @@ artifacts:
   protocol: "docs/PM_AR_PROTOCOL.md"
   report: null
   adjudication: null
+  workload_selection: "results/pm_ar/PM_AR0_SELECTION.json"
   predecessor_protocol: "docs/PM_POLICY_CENSUS_PROTOCOL.md"
   predecessor_report: "docs/PM_POLICY_CENSUS_REPORT.md"
   predecessor_adjudication: "results/pm_a/PM_A0_ADJUDICATION.json"
@@ -54,10 +55,10 @@ experiments:
     status: "not_started_workload_insufficient"
   - id: "PM-AR0"
     purpose: "Deterministic maximal-balanced 4x27 workload freeze"
-    status: "in_progress"
+    status: "passed"
   - id: "PM-AR1"
     purpose: "A100-only trainer, scoring, and resampling noise lock"
-    status: "blocked_on_PM_AR0"
+    status: "implementation_in_progress"
   - id: "PM-AR2"
     purpose: "Matched A100 and 910B trajectory cube"
     status: "blocked_on_PM_AR1"
