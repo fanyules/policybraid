@@ -1,0 +1,71 @@
+{
+  "schema": "policybraid.pm_ar3.v1",
+  "gate": "PM-AR3",
+  "frozen_at": "2026-08-28T18:30:00+08:00",
+  "parent": {
+    "pm_ar_path": "configs/pm_ar.json",
+    "pm_ar2_path": "configs/pm_ar2.json",
+    "pm_ar2_sha256": "4f9c96036a7705f106361f2c43cf1c3e86f7be64f762ebd09861f927b1d027f7",
+    "noise_lock_path": "results/pm_ar/PM_AR1_NOISE_LOCK.json",
+    "noise_lock_sha256": "427c5940c43e50d4bed0830018fa4529cbc3b172c758d10cd9f02243673e85c3",
+    "workload_path": "workloads/pm_ar_selected.jsonl",
+    "workload_sha256": "bf429ffcac1291516d7602634b74080474be956d84a4526876e66c75c16463cd"
+  },
+  "gradient_components": {
+    "labels": ["g_A_A", "g_A_N", "g_N_A", "g_N_N"],
+    "actual_contrast": "g_N_N-g_A_A",
+    "trajectory_source_component": "g_N_A-g_A_A",
+    "denominator_component": "g_A_N-g_A_A",
+    "interaction_residual": "g_N_N-g_N_A-g_A_N+g_A_A",
+    "behavior_denominators_detached": true,
+    "actual_denominator_source": "rollout_processed_behavior_logprobs",
+    "cross_denominator_source": "matched_decode_context_cross_score",
+    "trainer_score_source": "canonical_A100_learner_forward"
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "gradient_seed": 25150000,
+    "ess_seed": 25150001,
+    "prompt_structure_seed": 25150002,
+    "hierarchy": "paired_restart_then_task_family_prompt",
+    "restart_sampling": "sample_five_paired_restart_indices_with_replacement",
+    "prompt_sampling": "within_each_selected_restart_sample_27_prompts_per_family_with_replacement",
+    "lower95_quantile": "quantile_0.05_method_lower"
+  },
+  "prompt_structure": {
+    "risk_per_prompt_restart": "p95_over_union_history_tokens_of_abs(log_mu_N-log_mu_A)",
+    "aggregate_prompt_risk": "median_over_five_restarts",
+    "between_prompt_spread": "IQR_of_aggregate_prompt_risk",
+    "within_process_noise": "median_over_prompt_restart_abs(risk_prompt_restart-median_restart_risk_for_prompt)",
+    "restart_half_left": [0, 2, 4],
+    "restart_half_right": [1, 3],
+    "half_aggregate": "median_over_registered_half",
+    "family_directional_min_spearman": 0.3
+  },
+  "mixed_group_ess": {
+    "a100_sample_ids": [0, 2, 4, 6],
+    "910b_sample_ids": [1, 3, 5, 7],
+    "behavior_mixture": "0.5*mu_A+0.5*mu_N_at_each_realized_history",
+    "sequence_log_weight": "sum_token(log_pi_train-log_behavior_mixture)",
+    "group_ess_fraction": "exp(2*logsumexp(log_w)-logsumexp(2*log_w))/8",
+    "reported_statistic": "median_over_prompt_restart_groups"
+  },
+  "conditional_gap": {
+    "statistic": "p95_over_union_history_tokens_of_abs(log_mu_N-log_mu_A)",
+    "self_noise": "maximum_decode_self_reporter_absolute_gap_per_platform",
+    "pass_rule": "conditional_gap_exceeds_both_platform_self_noise"
+  },
+  "thresholds": {
+    "pm_rq_tolerance": 0.00005,
+    "gradient_distance_floor": 0.05,
+    "gradient_noise_multiplier": 2.0,
+    "minimum_restarts_above_threshold": 4,
+    "mixed_ess_fraction_lower95_min": 0.5,
+    "minimum_nonzero_advantage_groups": 64,
+    "minimum_families": 2,
+    "prompt_risk_iqr_over_within_mad_min": 2.0,
+    "prompt_half_spearman_lower95_min": 0.3,
+    "minimum_directional_families": 2,
+    "primary_full_support_only": true
+  }
+}

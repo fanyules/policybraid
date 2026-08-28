@@ -1,6 +1,6 @@
 # PM-AR: maximal-balanced scientific re-entry
 
-Status: preregistered; PM-AR0 selection freeze in progress
+Status: PM-AR0/PM-AR1 passed; PM-AR2 cube validated; PM-AR3 statistics frozen
 
 Claim under test: C-P
 
@@ -149,4 +149,3 @@ PM-AR passes only if every original scientific threshold holds:
 - If the PM-B oracle does not materially beat random placement, stop the
   controller path.
 - RTX and the 1 GbE three-island experiment remain blocked until PM-B passes.
-
