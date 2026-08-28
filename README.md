@@ -20,10 +20,9 @@ consistency mode, or RTX experiment was started. C-P remains untested.
 - Gate report: `docs/PM_POLICY_CENSUS_REPORT.md`
 
 The former vLLM-Ascend investigation is intentionally absent from `main`.
-Its full evidence remains recoverable on the
-`codex/policymesh-runtime-reentry` branch; the older unpatched Gate record is on
-`archive/policymesh-g0-failure`. Only the qualified runtime interface and its
-provenance are prerequisites here.
+A concise public description is isolated on branch
+`archive/vllm-ascend-note`; raw diagnostics remain only in local archival
+history. `main` carries only the qualified interface prerequisite.
 
 ## Local checks
 

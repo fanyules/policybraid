@@ -16,18 +16,8 @@ The frozen prerequisite is:
 - the qualification used 49,152 empirical draws and all 16 multinomial cells
   passed their registered tests.
 
-Provenance remains on the side branch:
-
-- experiment adjudication: branch `codex/policymesh-runtime-reentry`, commit
-  `9076c23`;
-- failure-path hardening: commit `b2b5dc1`;
-- isolated vLLM-Ascend runner patch: commit `a94bfcb0` in the compute-host
-  vLLM-Ascend worktree.
-
-The earlier failure came from an unsupported standalone/private sampler
-invocation and an unpropagated production-runner mode. Its detailed logs,
-patch-development history, and old Gate reports are deliberately not present
-on `main`; inspect the two archival branches when runtime debugging requires
-them. PM-A retains only a small per-process sentinel and never reopens that
+The engineering diagnosis and patch-development history are deliberately absent
+from `main`. A concise description is isolated on public branch
+`archive/vllm-ascend-note`; raw diagnostics remain in local archival history.
+PM-A would retain only a small per-process sentinel and would not reopen that
 engineering investigation.
-
