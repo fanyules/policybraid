@@ -1,0 +1,98 @@
+{
+  "asset_id": "Qwen/Qwen3-1.7B",
+  "asset_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "checks": [
+    {
+      "name": ".gitattributes",
+      "observed_bytes": 1606,
+      "observed_sha256": "5487645ebde94f1019604572f943e1faf91a860e15ad11891b8127cf0312951d",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "config.json",
+      "observed_bytes": 755,
+      "observed_sha256": "ccab64509720369255226efaf36c75655195fa6bfd27ed48143cc55d4e7107fc",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "generation_config.json",
+      "observed_bytes": 251,
+      "observed_sha256": "90373e8a092a7abb965d3fea4671ef129bb9f4ee5a3005f0ab8a95b9716812cb",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "LICENSE",
+      "observed_bytes": 11544,
+      "observed_sha256": "b907c8234b565e5ecefff8232dbb6f1d603fbf9a47a3176db734dcae27175d08",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "merges.txt",
+      "observed_bytes": 1823241,
+      "observed_sha256": "b8e04af9c950e393054010dcef499c3f005e803e9b2da1a09b96a26c33266eb1",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "model-00001-of-00002.safetensors",
+      "observed_bytes": 3441185608,
+      "observed_sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "model-00002-of-00002.safetensors",
+      "observed_bytes": 622329984,
+      "observed_sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "observed_bytes": 25923,
+      "observed_sha256": "c7b60517359107fb63c1abb8e2a03fe58a86308646fc6856bcb61efed94c3dcd",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "README.md",
+      "observed_bytes": 14263,
+      "observed_sha256": "4972f9f04b0e544fca61b1ffae5e1659a691e4f9e9e87b6dad096573c3254e10",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "tokenizer_config.json",
+      "observed_bytes": 9971,
+      "observed_sha256": "c27ef18dae7dccaee951f6066f71a1b35ca9ec4ff3168b097dbda7905a036324",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "tokenizer.json",
+      "observed_bytes": 11422654,
+      "observed_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "sha256_match": true,
+      "size_match": true
+    },
+    {
+      "name": "vocab.json",
+      "observed_bytes": 2776833,
+      "observed_sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+      "sha256_match": true,
+      "size_match": true
+    }
+  ],
+  "created_at": "2026-08-28T07:47:28.912480+00:00",
+  "hostname": "ubuntu",
+  "manifest_sha256": "a32063700e862759fe578576cf06a88b052dd5db50ee6ab4eb14c7963cbbac4b",
+  "missing_entries": [],
+  "repository_commit": "c18f101ecbeead989c452606c9ef6f7a038f6f34",
+  "schema": "policybraid.model_asset_verification.v1",
+  "status": "success",
+  "unexpected_entries": []
+}
